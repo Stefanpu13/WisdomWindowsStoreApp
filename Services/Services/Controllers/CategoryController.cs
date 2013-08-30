@@ -49,7 +49,8 @@ namespace Services.Controllers
 
             for (int i = 0; i < quotesFound.Count; i++)
             {
-                category.Quotes.Add(authors[i].InnerHtml, quotesFound[i].InnerHtml);
+                var authorsName = authors[i].LastChild;
+                category.Quotes.Add(authorsName.InnerHtml, quotesFound[i].InnerHtml);
             }
 
             return category;
