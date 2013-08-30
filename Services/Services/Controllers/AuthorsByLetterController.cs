@@ -37,7 +37,7 @@ namespace Services.Controllers
             return models;
         }
 
-        public ICollection<FoundAuthorsModel> GetCategoryContent(string letter)
+        public ICollection<FoundAuthorsModel> GetCategoryContent(string id)
         {           
             List<FoundAuthorsModel> categoryContent =
                 new List<FoundAuthorsModel>();
@@ -51,7 +51,7 @@ namespace Services.Controllers
             var result = html.DocumentNode.             
                 SelectNodes("//div[@class='post-outer']//a[@title]").
                 Where(node => node.InnerText.ToLower().
-                    StartsWith(letter.ToLower()));
+                    StartsWith(id.ToLower()));
 
             foreach (var item in result)
             {
