@@ -11,6 +11,5 @@ namespace Services.Models
     {
         [DataMember(Name = "letter")]
         public char Letter { get; set; }
-
     }
 }

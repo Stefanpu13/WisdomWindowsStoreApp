@@ -9,7 +9,7 @@ using HtmlAgilityPack;
 
 namespace Services.Controllers
 {
-    public class ThemeController : ApiController
+    public class CategoryController : ApiController
     {
         public ICollection<URLModel> Get()
         {
@@ -28,6 +28,31 @@ namespace Services.Controllers
             }
 
             return models;
+        }
+
+        public CategoryQuotesModel GetCategoryContent(string categoryName, string categoryUrl)
+        {
+            Dictionary<string, string> quotes = new Dictionary<string, string>();
+            var category = new CategoryQuotesModel
+            {
+                CategoryTitle = categoryName,
+                Quotes = quotes
+            };
+            var html = new HtmlDocument();
+            var htmlToLoad = GetHtml(categoryUrl);
+            html.LoadHtml(htmlToLoad);
+
+            // 'li' that is descendent of 'ul', that is descendant
+            //of 'div' with class ='post-outer'.
+            var quotesFound = html.DocumentNode.SelectNodes("//div[@class='post-outer']//ul//li");
+            var authors = html.DocumentNode.SelectNodes("//div[@class='post-outer']//div[@align]");
+
+            for (int i = 0; i < quotesFound.Count; i++)
+            {
+                category.Quotes.Add(authors[i].InnerHtml, quotesFound[i].InnerHtml);
+            }
+
+            return category;
         }
 
         public static string GetHtml(string url)

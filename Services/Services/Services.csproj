@@ -177,13 +177,14 @@
     <Compile Include="Controllers\AuthorsByLetterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AuthorController.cs" />
-    <Compile Include="Controllers\ThemeController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AuthorModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\CategoryQuotesModel.cs" />
     <Compile Include="Models\FoundAuthorsModel.cs" />
     <Compile Include="Models\URLModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
