@@ -11,10 +11,15 @@ namespace Services.Controllers
     {
         public RandomModel GetRandomQuote()
         {
-            var randomQuote = new RandomModel();
-            Random randomNumber = new Random();
+            CategoriesController controller = new CategoriesController();
+           
+            var categories = controller.GetAllCategories();
+            var randomCategory = categories.ElementAt(new Random().Next(0, categories.Count()));
+           
+            var quotes = controller.GetCategoryByName(randomCategory.Title, randomCategory.Url);
+            var foundQuote = quotes.Quotes.ElementAt(new Random().Next(0, quotes.Quotes.Count));
 
-
+            var randomQuote = new RandomModel(){Author = foundQuote.Key, Quote = foundQuote.Value};
 
             return randomQuote;
         }
