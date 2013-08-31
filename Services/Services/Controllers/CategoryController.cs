@@ -50,7 +50,7 @@ namespace Services.Controllers
             {
                 var categoryContentModel = new FoundAuthorsModel
                 {
-                    Name = item.Attributes[1].Value.Replace("Цитати на ", ""),
+                    Name = item.Attributes[1].Value,
                     Http = item.Attributes[0].Value
                 };
                 categoryByLetter.Add(categoryContentModel);
