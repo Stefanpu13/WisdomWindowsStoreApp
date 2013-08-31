@@ -7,7 +7,8 @@
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
         ready: function (element, options) {
-            // TODO: Initialize the page here.
+            WinJS.Utilities.query("a").listen("click",
+                Data.getCategoriesByLetter(Data.letters[28].letter), false);
         },
 
         unload: function () {

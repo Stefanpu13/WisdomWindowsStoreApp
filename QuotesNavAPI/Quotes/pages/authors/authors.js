@@ -11,8 +11,8 @@
 
         ready: function (element, options) {
             // TODO: Initialize the page here.
-            //WinJS.Utilities.query("a").listen("click",
-            //    this.linkClickEventHandler, false);
+            WinJS.Utilities.query("a").listen("click",
+                Data.getAuthorsByLetter(Data.letters[6].letter), false);
             //WinJS.Utilities.query('button').
             //    listen('click', this.goToAuthorPage);
         },

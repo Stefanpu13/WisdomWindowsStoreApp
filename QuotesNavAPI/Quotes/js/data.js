@@ -27,15 +27,32 @@
         authors:[],
 
         getAuthorsByLetter: function (letter) {
-           return WinJS.xhr({
-                url: this.baseUrl + "AuthorsByLetter/" + letter
-           })
+            var output = document.getElementById("output");
+            return WinJS.xhr({
+                url: this.baseUrl + "Authors/" + letter,
+                type: "GET"
+            }).then(function (request) {
+                if (request.responseText.length > 2) {
+                    output.innerHTML = request.responseText;
+                } else {
+                    output.innerHTML = "Не са намерени автори с буква " + letter + "!";
+                }
+            })
         },
-
-
-
         // Not a function, but a page that has buttons/divs/letters
         // and clicking on a buttons/divs/letters goes to given author.
-        //getCategories: function(){}
+        getCategoriesByLetter: function (letter) {
+            var output = document.getElementById("output");
+            return WinJS.xhr({
+                url: this.baseUrl + "Categories/" + letter,
+                type: "GET"
+            }).then(function (request) {
+                if (request.responseText.length > 2) {
+                    output.innerHTML = request.responseText;
+                } else {
+                    output.innerHTML = "Не е намерена категория с буква " + letter + "!";
+                }
+            })
+        }
     });
 })();
