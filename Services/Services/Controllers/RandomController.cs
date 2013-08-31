@@ -19,7 +19,7 @@ namespace Services.Controllers
             var quotes = controller.GetCategoryByName(randomCategory.Title, randomCategory.Url);
             var foundQuote = quotes.Quotes.ElementAt(new Random().Next(0, quotes.Quotes.Count));
 
-            var randomQuote = new RandomModel(){Author = foundQuote.Key, Quote = foundQuote.Value};
+            var randomQuote = new RandomModel(){Quote = foundQuote.Key, Author = foundQuote.Value};
 
             return randomQuote;
         }
