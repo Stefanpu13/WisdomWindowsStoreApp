@@ -185,7 +185,7 @@
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\CategoryQuotesModel.cs" />
     <Compile Include="Models\FoundAuthorsModel.cs" />
-    <Compile Include="Models\URLModel.cs" />
+    <Compile Include="Models\UrlModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

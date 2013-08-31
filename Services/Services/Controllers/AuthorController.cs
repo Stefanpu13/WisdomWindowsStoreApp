@@ -11,9 +11,9 @@ namespace Services.Controllers
 {
     public class AuthorController : ApiController
     {
-        public ICollection<URLModel> Get()
+        public ICollection<UrlModel> Get()
         {
-            List<URLModel> models = new List<URLModel>();
+            List<UrlModel> models = new List<UrlModel>();
             var html = new HtmlDocument();
             var htmlToLoad = GetHtml("http://misliicitati.blogspot.com/2010/11/blog-post_30.html");
             html.LoadHtml(htmlToLoad);
@@ -21,7 +21,7 @@ namespace Services.Controllers
 
             foreach (var item in result)
             {
-                var urlModel = new URLModel();
+                var urlModel = new UrlModel();
                 urlModel.Title = item.InnerHtml;
                 //urlModel.Title = item.Attributes["title"].Value;
                 urlModel.Url = item.Attributes["href"].Value;

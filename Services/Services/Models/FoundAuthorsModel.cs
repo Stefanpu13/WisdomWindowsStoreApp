@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Web;
 
 namespace Services.Models
 {
@@ -14,7 +12,5 @@ namespace Services.Models
 
         [DataMember(Name="http")]
         public string Http { get; set; }
-
-        
     }
 }

@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace Services.Models
 {
     [DataContract]
-    public class URLModel
+    public class UrlModel
     {
         [DataMember(Name = "title")]
         public string Title { get; set; }

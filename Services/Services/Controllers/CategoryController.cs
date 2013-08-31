@@ -11,9 +11,9 @@ namespace Services.Controllers
 {
     public class CategoryController : ApiController
     {
-        public ICollection<URLModel> Get()
+        public ICollection<UrlModel> Get()
         {
-            List<URLModel> models = new List<URLModel>();
+            List<UrlModel> models = new List<UrlModel>();
             var html = new HtmlDocument();
             var htmlToLoad = GetHtml("http://misliicitati.blogspot.com/2010/12/blog-post.html");
             html.LoadHtml(htmlToLoad);
@@ -21,13 +21,42 @@ namespace Services.Controllers
 
             foreach (var item in result)
             {
-                var urlModel = new URLModel();
+                var urlModel = new UrlModel();
                 urlModel.Title = item.InnerHtml;
                 urlModel.Url = item.Attributes["href"].Value;
                 models.Add(urlModel);
             }
 
             return models;
+        }
+
+        public ICollection<FoundAuthorsModel> GetCategoryByLetter(string id)
+        {
+            List<FoundAuthorsModel> categoryByLetter =
+                new List<FoundAuthorsModel>();
+            var html = new HtmlDocument();
+            var htmlToLoad =
+                GetHtml("http://misliicitati.blogspot.com/2010/12/blog-post.html");
+            html.LoadHtml(htmlToLoad);
+            // Select all 'a' nodes that are descendents of
+            // div node with class attributes named 'post-outer',
+            // and having title attribute.
+            var result = html.DocumentNode.
+                SelectNodes("//div[@class='post-outer']//a[@title]").
+                Where(node => node.InnerText.ToLower().
+                    StartsWith(id.ToLower()));
+
+            foreach (var item in result)
+            {
+                var categoryContentModel = new FoundAuthorsModel
+                {
+                    Name = item.Attributes[1].Value.Replace("Цитати на ", ""),
+                    Http = item.Attributes[0].Value
+                };
+                categoryByLetter.Add(categoryContentModel);
+            }
+
+            return categoryByLetter;
         }
 
         public CategoryQuotesModel GetCategoryContent(string categoryName, string categoryUrl)

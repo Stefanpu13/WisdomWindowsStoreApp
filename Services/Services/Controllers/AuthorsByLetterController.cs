@@ -93,8 +93,6 @@ namespace Services.Controllers
             return author;
         }
 
-
-
         public static string GetHtml(string url)
         {
             HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(url);
