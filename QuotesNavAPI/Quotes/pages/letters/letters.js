@@ -15,8 +15,6 @@
             // TODO: Initialize the page here.            
             WinJS.Utilities.query("a").listen("click",
                 EventHаndlers.linkClickEventHandler, false);
-            
-
         },
 
         unload: function () {
