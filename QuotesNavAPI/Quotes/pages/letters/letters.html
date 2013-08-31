@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>letters</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+
+    <link href="letters.css" rel="stylesheet" />
+    <script src="letters.js"></script>
+</head>
+<body>
+    <div class="letters fragment">
+        <header aria-label="Header content" role="banner">
+            <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle">Welcome to letters</span>
+            </h1>
+        </header>
+        <section aria-label="Main content" role="main">
+            <p>Content goes here.</p>
+            <p><a href="/pages/authors/authors.html">Go to authors by letter.</a></p>
+            <p><a href="/pages/categories/categories.html">Go to categories by letter.</a></p>
+            <!--<div id="lettersList" 
+                data-win-control="WinJS.UI.ListView" 
+                data-win-options="{itemDataSource: ViewModels.lettersList.dataSource}">  
+            </div>-->
+
+            <div id="lettersListTemplate" 
+                data-win-control="WinJS.Binding.Template">
+                <div data-win-bind="{innerText: letter, class: url}">
+                </div>
+
+            <div>
+
+        </div>
+    </div>
+
+
+           <!-- <button id="list-authors-btn" class="letters">А</button>
+            <button id="Button1" class="letters">Б</button>
+            <button id="Button2" class="letters">В</button>
+            <button id="Button3" class="letters">Г</button>-->
+        </section>
+    </div>
+</body>
+</html>

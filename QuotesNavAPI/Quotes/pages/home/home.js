@@ -1,4 +1,5 @@
-﻿(function () {
+﻿/// <reference path="../../js/eventHandlers.js" />
+(function () {
     "use strict";
 
     WinJS.UI.Pages.define("/pages/home/home.html", {
@@ -7,7 +8,7 @@
         ready: function (element, options) {
             // TODO: Initialize the page here.
             WinJS.Utilities.query("a").listen("click",
-                this.linkClickEventHandler, false);
+                EventHаndlers.linkClickEventHandler, false);
         },
 
         nameInputChanged: function (eventInfo) {
@@ -20,10 +21,6 @@
     },        
 
  
-    linkClickEventHandler: function (eventInfo) {
-        eventInfo.preventDefault();
-        var link = eventInfo.target;
-        WinJS.Navigation.navigate(link.href);
-    }
+    
     });
 })();

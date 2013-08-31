@@ -19,8 +19,6 @@
                 // Restore application state here.
             }
 
-            Retriever.getAuthors('а');
-
             if (app.sessionState.history) {
                 nav.history = app.sessionState.history;
             }
