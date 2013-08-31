@@ -10,10 +10,16 @@
     <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
 
     <link href="letters.css" rel="stylesheet" />
+    <script src="lettersCodeBehind.js"></script>
     <script src="letters.js"></script>
 </head>
 <body>
     <div class="letters fragment">
+         <div id="lettersListTemplate" data-win-control="WinJS.Binding.Template">
+                <div data-win-bind="innerText: letter;className: letterClass">
+                </div>
+        </div>
+
         <header aria-label="Header content" role="banner">
             <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
             <h1 class="titlearea win-type-ellipsis">
@@ -24,22 +30,14 @@
             <p>Content goes here.</p>
             <p><a href="/pages/authors/authors.html">Go to authors by letter.</a></p>
             <p><a href="/pages/categories/categories.html">Go to categories by letter.</a></p>
-            <!--<div id="lettersList" 
+
+            <div id="lettersList" 
                 data-win-control="WinJS.UI.ListView" 
-                data-win-options="{itemDataSource: ViewModels.lettersList.dataSource}">  
-            </div>-->
-
-            <div id="lettersListTemplate" 
-                data-win-control="WinJS.Binding.Template">
-                <div data-win-bind="{innerText: letter, class: url}">
-                </div>
-
-            <div>
-
-        </div>
-    </div>
-
-
+                data-win-options="{
+                itemDataSource: ViewModels.lettersList.dataSource,
+                itemTemplate: select('#lettersListTemplate'),
+                oniteminvoked: LettersCodeBehind.goToPageByLetterPage}">  
+            </div>
            <!-- <button id="list-authors-btn" class="letters">А</button>
             <button id="Button1" class="letters">Б</button>
             <button id="Button2" class="letters">В</button>

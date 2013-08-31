@@ -12,16 +12,16 @@
             ViewModels.getLetters();
         },
         ready: function (element, options) {
-            // TODO: Initialize the page here.
-            //var letters = ViewModels.getLetters();
+            // TODO: Initialize the page here.            
             WinJS.Utilities.query("a").listen("click",
                 EventHаndlers.linkClickEventHandler, false);
-            //WinJS.Utilities.query('button.letters').listen('click',
-            //    this.goToPage, false);
+            
+
         },
 
         unload: function () {
             // TODO: Respond to navigations away from this page.
+            var elems = WinJS.Utilities.query('.defaultClass');
         },
 
         updateLayout: function (element, viewState, lastViewState) {

@@ -4,9 +4,13 @@
 (function () {
     // The listeners from the 'authors.js' file should take code from here.
     // which calls the functions in 'data.js'
-    var lettersList =  new WinJS.Binding.List([]);
+    var lettersList = new WinJS.Binding.List([]);
 
     var loadLetters = function () {
+
+        var currentCount = lettersList.dataSource.list.length;
+        lettersList.dataSource.list.splice(0, currentCount);
+
         var letters = Data.letters;
         for (var i = 0; i < letters.length; i++) {
             lettersList.push(letters[i]);
@@ -28,7 +32,5 @@
         getAuthors: getAuthors,
         getLetters: loadLetters,
         lettersList:lettersList
-
-
     });
 })();

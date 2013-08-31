@@ -1,19 +1,19 @@
 ﻿(function () {
-    // POpulate bulgarian capital letters that are to be bound
+    // Populate bulgarian capital letters that are to be bound.
     var letters = [];
+    var lettersFilled = false;
 
     (function () {
         var letterACode = 'А'.charCodeAt(0);
-        //letters.push({ letter: 'А', url: '' });
-
-        if (letters.length == 0) {
+        if (!lettersFilled) {
 
             for (var i = letterACode; i < letterACode + 32; i++) {
                 if (i - letterACode != 27 && i - letterACode != 29) {
                     var letter = String.fromCharCode(i);
-                    letters.push({ letter: letter, url: '' });
+                    letters.push({ letter: letter, letterClass: 'defaultClass' });
                 }
             }
+            lettersFilled = true;
         }
     })();
 
@@ -31,6 +31,8 @@
                 url: this.baseUrl + "AuthorsByLetter/" + letter
            })
         },
+
+
 
         // Not a function, but a page that has buttons/divs/letters
         // and clicking on a buttons/divs/letters goes to given author.
