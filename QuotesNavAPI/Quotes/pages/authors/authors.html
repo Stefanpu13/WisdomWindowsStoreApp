@@ -15,6 +15,11 @@
 </head>
 <body>
     <div class="authors fragment">
+        <div id="authorsByLetterTemplate" data-win-control="WinJS.Binding.Template">
+            <div data-win-bind="innerText: name">
+            </div>            
+        </div>
+
         <header aria-label="Header content" role="banner">
             <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
             <h1 class="titlearea win-type-ellipsis">
@@ -22,7 +27,14 @@
             </h1>
         </header>
         <section aria-label="Main content" role="main">
-            <div id="output"></div>           
+            <div id="output"></div>
+            <div id="lettersList" 
+                data-win-control="WinJS.UI.ListView" 
+                data-win-options="{
+                itemDataSource: ViewModels.authorsByLetterList.dataSource,
+                itemTemplate: select('#authorsByLetterTemplate'),
+                oniteminvoked: LettersCodeBehind.goToPageByLetterPage}">  
+            </div>           
         </section>
     </div>
 </body>

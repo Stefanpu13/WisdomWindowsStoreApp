@@ -86,7 +86,12 @@
                 },
 
                 // Responds to navigation by adding new pages to the DOM.
-                _navigated: function (args) {
+                _navigated: function (args) {                    
+                    if (args.detail.location.indexOf("nointernet") == -1 && !Errors.connectivityOk()) {
+                        nav.navigate("/pages/nointernet/nointernet.html");
+                        return;
+                    }
+
                     var newElement = this._createPageElement();
                     var parentedComplete;
                     var parented = new WinJS.Promise(function (c) { parentedComplete = c; });

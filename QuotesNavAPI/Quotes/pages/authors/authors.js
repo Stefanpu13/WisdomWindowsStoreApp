@@ -7,18 +7,36 @@
     WinJS.UI.Pages.define("/pages/authors/authors.html", {
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
-       
+        init: function (element, options) {
+            //WinJS.Binding.processAll(element, ViewModels.resetBinding());
+            WinJS.Binding.processAll(element,
+          ViewModels.getAuthors(options.selectedLetter)
+          //      .done(function (success) {
+             
+          //    ViewModels.loadAuthors();
+          //}, function (error) {
+          //    console.log(error.message);
+          //})
+          );
+           
+        },
 
         ready: function (element, options) {
+           
+            
             // TODO: Initialize the page here.
-            WinJS.Utilities.query("a").listen("click",
-                Data.getAuthorsByLetter(Data.letters[6].letter), false);
+            //Data.getAuthorsByLetter(options.selectedLetter);
+            //WinJS.Utilities.query("a").listen("click",
+            //    Data.getAuthorsByLetter(Data.letters[6].letter), false);
             //WinJS.Utilities.query('button').
             //    listen('click', this.goToAuthorPage);
         },
-
+        
         unload: function () {
             // TODO: Respond to navigations away from this page.
+            // Keep in mind that reset binding should only be called when 
+            // Returning to 'letters' view.
+            ViewModels.resetBinding();
         },
 
         updateLayout: function (element, viewState, lastViewState) {

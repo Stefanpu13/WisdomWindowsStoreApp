@@ -1,6 +1,4 @@
 ﻿(function () {
-
-
     var author = {
         name: "",
         quotes:[]
@@ -11,22 +9,18 @@
         this.qoutesUrl = url;
     });
 
-    var allAuthors = [];
-
-    WinJS.Namespace.define('Models', {
-        AuthorsByLetterModel: AuthorsByLetter,
-        AllAuthors: allAuthors
+    var CategoriesByLetter = WinJS.Class.define(function (name, url) {
+        this.name = name;
+        this.qoutesUrl = url;
     });
 
-    //var ObservableAuthor = WinJS.Binding.define(author);
-
-    //WinJS.Namespace.define('Data', {
-    //    getAuthor: function (name, quotes) {
-    //        return new ObservableAuthor({
-    //            name: name,
-    //            quotes: quotes
-    //        });
-    //    },
-    //    allAuthors: allAuthors
-    //});
+    var SearchError = WinJS.Class.define(function (content) {
+        this.message = content;
+    });
+    
+    WinJS.Namespace.define('Models', {
+        AuthorsByLetterModel: AuthorsByLetter,
+        CategoriesByLetterModel: CategoriesByLetter,
+        SearchError: SearchError        
+    });
 })();

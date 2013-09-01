@@ -58,6 +58,7 @@
     <Content Include="images\smalllogo.png" />
     <Content Include="images\splashscreen.png" />
     <Content Include="images\storelogo.png" />
+    <Content Include="js\errors.js" />
     <Content Include="js\eventHandlers.js" />
     <Content Include="js\model.js" />
     <Content Include="js\data.js" />
@@ -78,6 +79,9 @@
     <Content Include="pages\letters\letters.html" />
     <Content Include="pages\letters\letters.js" />
     <Content Include="pages\letters\lettersCodeBehind.js" />
+    <Content Include="pages\nointernet\nointernet.css" />
+    <Content Include="pages\nointernet\nointernet.html" />
+    <Content Include="pages\nointernet\nointernet.js" />
     <Content Include="pages\singleAuthor\singleAuthor.css" />
     <Content Include="pages\singleAuthor\singleAuthor.html" />
     <Content Include="pages\singleAuthor\singleAuthor.js" />

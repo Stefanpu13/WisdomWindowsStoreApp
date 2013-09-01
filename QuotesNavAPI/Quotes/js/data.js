@@ -1,4 +1,5 @@
-﻿(function () {
+﻿/// <reference path="errors.js" />
+(function () {
     // Populate bulgarian capital letters that are to be bound.
     var letters = [];
     var lettersFilled = false;
@@ -24,35 +25,23 @@
 
         letters:letters,
 
-        authors:[],
+        authorsByLetter: [],
+
+        categoriesByLetter: [],
 
         getAuthorsByLetter: function (letter) {
-            var output = document.getElementById("output");
-            return WinJS.xhr({
+            return WinJS.Promise.timeout(5000, WinJS.xhr({
                 url: this.baseUrl + "Authors/" + letter,
                 type: "GET"
-            }).then(function (request) {
-                if (request.responseText.length > 2) {
-                    output.innerHTML = request.responseText;
-                } else {
-                    output.innerHTML = "Не са намерени автори с буква " + letter + "!";
-                }
-            })
+            }));
         },
         // Not a function, but a page that has buttons/divs/letters
         // and clicking on a buttons/divs/letters goes to given author.
-        getCategoriesByLetter: function (letter) {
-            var output = document.getElementById("output");
+        getCategoriesByLetter: function (letter) {            
             return WinJS.xhr({
                 url: this.baseUrl + "Categories/" + letter,
                 type: "GET"
-            }).then(function (request) {
-                if (request.responseText.length > 2) {
-                    output.innerHTML = request.responseText;
-                } else {
-                    output.innerHTML = "Не е намерена категория с буква " + letter + "!";
-                }
-            })
+            });
         }
     });
 })();
