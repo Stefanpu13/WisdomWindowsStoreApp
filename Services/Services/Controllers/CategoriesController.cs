@@ -76,6 +76,11 @@ namespace Services.Controllers
             var quotesFound = html.DocumentNode.SelectNodes("//div[@class='post-outer']//ul//li");
             var authors = html.DocumentNode.SelectNodes("//div[@class='post-outer']//div[@align]");
 
+            var title = html.DocumentNode.SelectNodes("//title");
+
+            var categoryTitle = GetName(title);
+            category.CategoryTitle = categoryTitle;
+
             for (int i = 0; i < quotesFound.Count; i++)
             {
                 var authorsName = authors[i].FirstChild;
@@ -83,6 +88,20 @@ namespace Services.Controllers
             }
 
             return category;
+        }
+
+        private string GetName(HtmlNodeCollection titleNode)
+        {
+            string authorName = null;
+            if (titleNode.Count > 0)
+            {
+                var innerText = titleNode.FirstOrDefault().InnerText;
+                var dashIndex = innerText.IndexOf(" -");
+                var firstPartOfTitle = innerText.Substring(0, dashIndex);
+                authorName = firstPartOfTitle.Replace("Цитати на тема ", "");
+            }
+            return authorName;
+
         }
 
         public static string GetHtml(string url)
