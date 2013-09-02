@@ -16,6 +16,13 @@
 <body>
     <!-- The content that will be loaded and displayed. -->
     <div class="fragment homepage">
+        <div id="randomTemplate" data-win-control="WinJS.Binding.Template">
+            <div style="width:inherit; height:inherit;">
+                <p data-win-bind="innerText: quote"></p>
+                <h4 style="text-align:right" data-win-bind="innerText: author"></h4>
+            </div>            
+        </div>
+
         <header aria-label="Header content" role="banner">
             <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
             <h1 class="titlearea win-type-ellipsis">
@@ -26,6 +33,13 @@
             <p>Content goes here.</p>
             <p><a href="/pages/letters/letters.html" id="authors">Go to authors.</a></p>
             <p><a href="/pages/letters/letters.html" id="categories">Go to categories.</a></p>
+            <div id="output"></div>
+            <div id="randomList" 
+                data-win-control="WinJS.UI.ListView" 
+                data-win-options="{
+                itemDataSource: ViewModels.randomQuoteList.dataSource,
+                itemTemplate: select('#randomTemplate')}">  
+            </div>  
         </section>
     </div>
 </body>

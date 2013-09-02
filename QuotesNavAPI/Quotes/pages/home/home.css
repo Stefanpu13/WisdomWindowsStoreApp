@@ -3,6 +3,12 @@
     margin-right: 120px;
 }
 
+#randomList {
+    width:100%;
+    height:100%;
+}
+
+
 @media screen and (-ms-view-state: snapped) {
     .homepage section[role=main] {
         margin-left: 20px;

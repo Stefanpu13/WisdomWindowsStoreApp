@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="ms-design-extensionType" content="Search" />
+    <title>Search Contract</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+
+    <link href="/css/default.css" rel="stylesheet" />
+    <link href="/pages/searchResults/searchResults.css" rel="stylesheet" />
+    <script src="/js/data.js"></script>
+</head>
+<body>
+    <!-- This template is used to display each item in the ListView declared
+         below. -->
+    <div id="search-categories-templates" class="itemtemplate" data-win-control="WinJS.Binding.Template">
+        <div style="width: 150px; height: 50px;">
+            <h4 style="font-size:16px; margin:10px;" data-win-bind="innerText: name"></h4>
+        </div>
+    </div>
+
+    <!-- The content that will be loaded and displayed. -->
+    <div class="searchResults fragment">
+        <header aria-label="Header content" role="banner">
+            <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
+            <div class="titlearea">
+                <h1>Search results for:</h1>
+            </div>
+        </header>
+        <section aria-label="Main content" role="main">
+           <div data-win-control="WinJS.UI.ListView"
+               data-win-options="{
+               itemTemplate: select('#search-categories-templates'),
+               itemDataSource: ViewModels.categoriesByLetterList.dataSource,}">
+           </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -32,6 +32,11 @@
     var SearchError = WinJS.Class.define(function (content) {
         this.message = content;
     });
+
+    var RandomModel = WinJS.Class.define(function (quote, author) {
+        this.quote = quote;
+        this.author = author;
+    });
     
     WinJS.Namespace.define('Models', {
         AuthorsByLetterModel: AuthorsByLetter,
@@ -39,6 +44,7 @@
         AuthorQuotesModel: AuthorQuotes,
         CategoryQuotesModel: CategoryQuotes,
         Quote: Quote,
-        SearchError: SearchError        
+        SearchError: SearchError,
+        RandomModel: RandomModel,
     });
 })();

@@ -9,7 +9,7 @@
     var categoriesByLetterList = new WinJS.Binding.List([]);
     var authorsQuotesList = new WinJS.Binding.List([]);
     var categoriesQuotesList = new WinJS.Binding.List([]);
-    var quotesList = new WinJS.Binding.List([]);
+    var randomQuoteList = new WinJS.Binding.List([]);
     var error = new WinJS.Binding.define(Models.SearchError);    
 
     var decodeElements = function (text) {
@@ -156,6 +156,19 @@
         });
     }
 
+    var getRandom = function () {
+        var allPromises = [];
+        var quote;
+        var promise = Data.getRandomQuote().then(function (result) {
+            quote = JSON.parse("[" + result.responseText + "]")[0];
+            Data.randomQuote.pop();
+            Data.randomQuote.push(new Models.RandomModel(quote.quote, quote.author));
+        });
+        allPromises.push(promise);
+
+        return WinJS.Promise.join(allPromises);
+    }
+
     var loadLetters = function () {
 
         var currentCount = lettersList.dataSource.list.length;
@@ -199,6 +212,14 @@
         }
     }
 
+    var loadRandomQuote = function () {
+
+        var quote = Data.randomQuote;
+        for (var i = 0; i < quote.length; i++) {
+            randomQuoteList.push(quote[i]);
+        }
+    }
+
     var resetBinding = function (bindList) {
         var bindListCount = bindList.dataSource.list.length;
         bindList.dataSource.list.splice(0, bindListCount);       
@@ -209,6 +230,8 @@
         getCategories: getCategories,
         getAuthorsQuotes: getAuthorsQuotes,
         getCategoriesQuotes: getCategoriesQuotes,
+        getRandomQuote: getRandom,
+        loadRandomQuote: loadRandomQuote,
         loadLetters: loadLetters,
         loadAuthors: loadAuthorsByLetter,
         loadCategories: loadCategoriesByLetter,
@@ -219,7 +242,7 @@
         authorsByLetterList: authorsByLetterList,
         categoriesByLetterList: categoriesByLetterList,
         authorsQuotesList: authorsQuotesList,
-        categoriesQuotesList: categoriesQuotesList
-        
+        categoriesQuotesList: categoriesQuotesList,
+        randomQuoteList: randomQuoteList
     });
 })();

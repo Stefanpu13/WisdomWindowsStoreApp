@@ -23,7 +23,9 @@
         // Each author has name and url to its page.
         baseUrl: "http://wisdomaccessapi.apphb.com/api/",
 
-        letters:letters,
+        letters: letters,
+
+        randomQuote: [],
 
         authorsByLetter: [],
 
@@ -63,6 +65,13 @@
                     "&categoryUrl=" + url,                                
                 type: "GET",
             }));
+        },
+
+        getRandomQuote: function () {
+            return WinJS.xhr({
+                url: this.baseUrl + "Random",
+                type: "GET"
+            });
         }
     });
 })();

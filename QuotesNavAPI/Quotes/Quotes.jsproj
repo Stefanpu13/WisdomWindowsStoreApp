@@ -64,6 +64,7 @@
     <Content Include="js\data.js" />
     <Content Include="js\default.js" />
     <Content Include="js\navigator.js" />
+    <Content Include="js\print.js" />
     <Content Include="js\viewmodels.js" />
     <Content Include="pages\authorQuotes\authorQuotes.css" />
     <Content Include="pages\authorQuotes\authorQuotes.html" />
@@ -90,6 +91,9 @@
     <Content Include="pages\nointernet\nointernet.css" />
     <Content Include="pages\nointernet\nointernet.html" />
     <Content Include="pages\nointernet\nointernet.js" />
+    <Content Include="pages\searchResults\searchResults.css" />
+    <Content Include="pages\searchResults\searchResults.html" />
+    <Content Include="pages\searchResults\searchResults.js" />
     <None Include="Quotes_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
