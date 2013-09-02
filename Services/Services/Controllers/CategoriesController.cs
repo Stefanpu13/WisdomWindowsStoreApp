@@ -62,7 +62,7 @@ namespace Services.Controllers
         public CategoryModel GetCategoryByName(string categoryName, string categoryUrl)
         {
             Dictionary<string, string> quotes = new Dictionary<string, string>();
-            var category = new CategoryQuotesModel
+            var category = new CategoryModel
             {
                 CategoryTitle = categoryName,
                 Quotes = quotes
@@ -73,37 +73,16 @@ namespace Services.Controllers
 
             // 'li' that is descendent of 'ul', that is descendant
             //of 'div' with class ='post-outer'.
-            var quotesFound =
-                html.DocumentNode.SelectNodes("//div[@class='post-outer']//ul//li");
-            var authors =
-                html.DocumentNode.SelectNodes("//div[@class='post-outer']//div[@align]");
-
-            var title = html.DocumentNode.SelectNodes("//title");
-
-            var categoryTitle = GetName(title);
-            category.CategoryTitle = categoryTitle;
+            var quotesFound = html.DocumentNode.SelectNodes("//div[@class='post-outer']//ul//li");
+            var authors = html.DocumentNode.SelectNodes("//div[@class='post-outer']//div[@align]");
 
             for (int i = 0; i < quotesFound.Count; i++)
             {
-                var authorsName = authors[i].LastChild;
-                category.Quotes.Add(authorsName.InnerHtml, quotesFound[i].InnerHtml);
+                var authorsName = authors[i].FirstChild;
+                category.Quotes.Add(quotesFound[i].InnerHtml, authorsName.InnerHtml);
             }
 
             return category;
-        }
-
-        private string GetName(HtmlNodeCollection titleNode)
-        {
-            string authorName = null;
-            if (titleNode.Count > 0)
-            {
-                var innerText = titleNode.FirstOrDefault().InnerText;
-                var dashIndex = innerText.IndexOf(" -");
-                var firstPartOfTitle = innerText.Substring(0, dashIndex);
-                authorName = firstPartOfTitle.Replace("Цитати на тема ", "");
-            }
-            return authorName;
-
         }
 
         public static string GetHtml(string url)
