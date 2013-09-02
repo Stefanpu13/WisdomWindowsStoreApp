@@ -21,4 +21,5 @@
     width:100px;
     margin: 5px;
     -ms-grid-column: 1;
+    background-color:red;
 }

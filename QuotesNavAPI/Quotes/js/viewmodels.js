@@ -8,6 +8,7 @@
     var authorsByLetterList = new WinJS.Binding.List([]);
     var categoriesByLetterList = new WinJS.Binding.List([]);
     var authorsQuotesList = new WinJS.Binding.List([]);
+    var categoriesQuotesList = new WinJS.Binding.List([]);
     var quotesList = new WinJS.Binding.List([]);
     var error = new WinJS.Binding.define(Models.SearchError);    
 
@@ -28,7 +29,7 @@
         return text;
     }
 
-    var getQuotes = function (authors) {
+    var getAuthorsQuotes = function (authors) {
         Data.authorsQuotes = [];
         var allPromises = [];
         var author;
@@ -40,7 +41,7 @@
                     for (var j = 0; j < author.quotes.length; j++) {
                         var quotes = decodeElements(author.quotes[j]);
 
-                        Data.quotes.
+                        Data.authorsQuotes.
                         push(new Models.Quote(quotes, author.name));
                     }
                 });
@@ -52,33 +53,46 @@
 
             }
             else {                
-                ViewModels.loadQuotes();
+                ViewModels.loadAuthorsQuotes();
             }
         });
     }
 
-    var getAuthorsQuotes = function (authors) {
-        Data.authorsQuotes = [];
+    var getCategoriesQuotes = function (categories) {
+        Data.categoriesQuotes = [];
         var allPromises = [];
-        var author;
-        for (var i = 0; i < authors.length; i++) {            
+        var category;
+        for (var i = 0; i < categories.length; i++) {
             var promise =
-                Data.getAuthorsQuotes(authors[i].name, authors[i].quotesUrl).then(function (result) {
-                    author = JSON.parse("[" + result.responseText + "]")[0];
-                        Data.authorsQuotes.
-                            push(new Models.AuthorQuotesModel(author.name, author.quotes));
+                Data.getCategoriesQuotes(categories[i].name, categories[i].quotesUrl).then(function (result) {
+                    category = JSON.parse(result.responseText);
+                    var allQuotes = category.quotes;
+                    var quoteText;
+                    var authorName;                    
+                    var newQuote; 
+
+                    // As 'category.quotes' is object eith properties, we have to
+                    // enumerate and Push all props and their values in 'newQuote'
+                    for (var prop in allQuotes) {
+                        newQuote = new Models.CategoryQuotesModel(category.title);
+                        quoteText = decodeElements(prop);
+                        authorName = allQuotes[prop];
+                        newQuote.authorName = allQuotes[prop];
+                        newQuote.quoteContent = decodeElements(prop);
+                        Data.categoriesQuotes.push(newQuote);
+                    }
+
                     
                 });
             allPromises.push(promise);
         }
 
         return WinJS.Promise.join(allPromises).done(function () {
-            if (Data.authorsByLetter.length == 0) {
-          
+            if (Data.categoriesByLetter.length == 0) {
+                // TODO: Error responce
             }
             else {
-                // LoadAuthorsQuotes
-                ViewModels.loadAuthorsQuotes();
+                ViewModels.loadCategoriesQuotes();
             }
         });
     }
@@ -86,31 +100,32 @@
     var getAuthors = function (letters) {
         // Clean authors from previous request.
         Data.authorsByLetter = [];
-        var allPromises = [];
-        var authors;
-        for (var i = 0; i < letters.length; i++) {
-            var promise =
-                Data.getAuthorsByLetter(letters[i]).then(function (result) {
-                    authors = JSON.parse("[" + result.responseText + "]")[0];
+            var allPromises = [];
+            var authors;
+            for (var i = 0; i < letters.length; i++) {
+                var promise =
+                    Data.getAuthorsByLetter(letters[i]).then(function (result) {
+                        authors = JSON.parse("[" + result.responseText + "]")[0];
 
-                    for (var i = 0; i < authors.length; i++) {
-                        Data.authorsByLetter.
-                            push(new Models.AuthorsByLetterModel(authors[i].name, authors[i].http));
-                    }
-                });
-            allPromises.push(promise);
-        }
+                        for (var i = 0; i < authors.length; i++) {
+                            Data.authorsByLetter.
+                                push(new Models.AuthorsByLetterModel(authors[i].name, authors[i].http));
+                        }
+                    });
+                allPromises.push(promise);
+            }
 
-        return WinJS.Promise.join(allPromises).done(function () {
-            if (Data.authorsByLetter.length == 0) {
-                //return new WinJS.Promise(function (complete, error) {
-                //    error("Не бяха открити автори с буква " + letter + ".");
-                //});
-            }
-            else {
-                ViewModels.loadAuthors();
-            }
-        });
+            return WinJS.Promise.join(allPromises).done(function () {
+                if (Data.authorsByLetter.length == 0) {
+                    //return new WinJS.Promise(function (complete, error) {
+                    //    error("Не бяха открити автори с буква " + letter + ".");
+                    //});
+                }
+                else {
+                    ViewModels.loadAuthors();
+                }
+            });
+        
     }
 
     var getCategories = function (letters) {
@@ -122,7 +137,7 @@
 
                 for (var i = 0; i < categories.length; i++) {
                     Data.categoriesByLetter.
-                        push(new Models.AuthorsByLetterModel(categories[i].name, categories[i].http));
+                        push(new Models.CategoriesByLetterModel(categories[i].name, categories[i].http));
                 }
             });
 
@@ -176,39 +191,35 @@
         }
     }
 
-    var loadQuotes = function () {
-        var quotes = Data.quotes;
+    var loadCategoriesQuotes = function () {
+        var categoriesQuotes = Data.categoriesQuotes;
 
-        for (var i = 0; i < quotes.length; i++) {
-            quotesList.push(quotes[i]);
+        for (var i = 0; i < categoriesQuotes.length; i++) {
+            categoriesQuotesList.push(categoriesQuotes[i]);
         }
     }
 
     var resetBinding = function (bindList) {
         var bindListCount = bindList.dataSource.list.length;
-        bindList.dataSource.list.splice(0, bindListCount);
-        //var currentAuthorCount = authorsByLetterList.dataSource.list.length;
-        //authorsByLetterList.dataSource.list.splice(0, currentAuthorCount);
-
-        //var  currentCategoryCount = categoriesByLetterList.dataSource.list.length;
-        //categoriesByLetterList.dataSource.list.splice(0, currentCategoryCount);
+        bindList.dataSource.list.splice(0, bindListCount);       
     }
 
     WinJS.Namespace.define('ViewModels', {
         getAuthors: getAuthors,
         getCategories: getCategories,
         getAuthorsQuotes: getAuthorsQuotes,
-        getQuotes:getQuotes,
+        getCategoriesQuotes: getCategoriesQuotes,
         loadLetters: loadLetters,
         loadAuthors: loadAuthorsByLetter,
         loadCategories: loadCategoriesByLetter,
         loadAuthorsQuotes: loadAuthorsQuotes,
-        loadQuotes:loadQuotes,
+        loadCategoriesQuotes:loadCategoriesQuotes,
         resetBinding:resetBinding,
         lettersList: lettersList,
         authorsByLetterList: authorsByLetterList,
         categoriesByLetterList: categoriesByLetterList,
         authorsQuotesList: authorsQuotesList,
-        quotesList: quotesList
+        categoriesQuotesList: categoriesQuotesList
+        
     });
 })();

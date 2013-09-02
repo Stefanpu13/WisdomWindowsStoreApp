@@ -9,6 +9,7 @@
     };
 
     var getAuthorQuotes = function (invokeEvent) {
+        // get the listview selected items
         var listView = document.getElementById('authorsList').winControl;
         var selectionCount = listView.selection.count();
         var selectedAuthors = [];

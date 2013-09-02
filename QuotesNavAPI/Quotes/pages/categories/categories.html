@@ -10,12 +10,13 @@
     <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
 
     <link href="categories.css" rel="stylesheet" />
+    <script src="categoriesCodeBehind.js"></script>
     <script src="categories.js"></script>
 </head>
 <body>
     <div id="categoriesByLetterTemplate" data-win-control="WinJS.Binding.Template">
             <div id="categoriesList-container">
-                <div data-win-bind="innerText: name">
+                <div data-win-bind="innerText: name; className: quotesUrl">
                 </div>
             </div>
         </div>
@@ -28,12 +29,12 @@
             </h1>
         </header>
         <section aria-label="Main content" role="main">
-            <div id="lettersList" 
+            <div id="categoriesList" 
                 data-win-control="WinJS.UI.ListView" 
                 data-win-options="{
                 itemDataSource: ViewModels.categoriesByLetterList.dataSource,
                 itemTemplate: select('#categoriesByLetterTemplate'),
-                oniteminvoked: LettersCodeBehind.goToPageByLetterPage}">  
+                oniteminvoked: CategoriesCodeBehind.getCategoriesQuotes}">  
             </div>
         </section>
     </div>

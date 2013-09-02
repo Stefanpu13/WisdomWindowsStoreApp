@@ -8,6 +8,12 @@
         this.quotes = quotes;
     })
 
+    var CategoryQuotes = WinJS.Class.define(function (name, quoteContent, authorName) {
+        this.name = name;
+        this.quoteContent = quoteContent;
+        this.authorName = authorName;
+    })
+
     var Quote = WinJS.Class.define(function (content, author) {
         this.content= content;
         this.author = author;
@@ -20,7 +26,7 @@
 
     var CategoriesByLetter = WinJS.Class.define(function (name, url) {
         this.name = name;
-        this.qoutesUrl = url;
+        this.quotesUrl = url;
     });
 
     var SearchError = WinJS.Class.define(function (content) {
@@ -31,6 +37,7 @@
         AuthorsByLetterModel: AuthorsByLetter,
         CategoriesByLetterModel: CategoriesByLetter,
         AuthorQuotesModel: AuthorQuotes,
+        CategoryQuotesModel: CategoryQuotes,
         Quote: Quote,
         SearchError: SearchError        
     });

@@ -31,6 +31,8 @@
 
         authorsQuotes: [],
 
+        categoriesQuotes: [],
+
         quotes:[],
 
         getAuthorsByLetter: function (letter) {
@@ -57,7 +59,8 @@
 
         getCategoriesQuotes: function (name, url) {
             return WinJS.Promise.timeout(5000, WinJS.xhr({
-                url: this.baseUrl + "Categories?name=" + name + "&url=" + url,                
+                url: this.baseUrl + "Categories?categoryName=" + name +
+                    "&categoryUrl=" + url,                                
                 type: "GET",
             }));
         }

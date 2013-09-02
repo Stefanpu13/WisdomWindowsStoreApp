@@ -1,23 +1,22 @@
-﻿/// <reference path="../../js/viewmodels.js" />
-// For an introduction to the Page Control template, see the following documentation:
+﻿// For an introduction to the Page Control template, see the following documentation:
 // http://go.microsoft.com/fwlink/?LinkId=232511
 (function () {
     "use strict";
 
-    WinJS.UI.Pages.define("/pages/authorQuotes/authorQuotes.html", {
+    WinJS.UI.Pages.define("/pages/categoryQuotes/categoryQuotes.html", {
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
-        init: function (element, options) { 
+        init: function (element, options) {
             WinJS.Binding.processAll(element,
-          ViewModels.getAuthorsQuotes(options.selectedAuthors));
+          ViewModels.getCategoriesQuotes(options.selectedCategories));
         },
+
         ready: function (element, options) {
-            // TODO: Initialize the page here.            
+            // TODO: Initialize the page here.
         },
 
         unload: function () {
             // TODO: Respond to navigations away from this page.
-            //ViewModels.resetBinding(ViewModels.quotesList);
         },
 
         updateLayout: function (element, viewState, lastViewState) {

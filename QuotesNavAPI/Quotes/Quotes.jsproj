@@ -76,6 +76,9 @@
     <Content Include="pages\categories\categories.html" />
     <Content Include="pages\categories\categories.js" />
     <Content Include="pages\categories\categoriesCodeBehind.js" />
+    <Content Include="pages\categoryQuotes\categoryQuotes.css" />
+    <Content Include="pages\categoryQuotes\categoryQuotes.html" />
+    <Content Include="pages\categoryQuotes\categoryQuotes.js" />
     <Content Include="pages\home\home.css" />
     <Content Include="pages\home\home.html" />
     <Content Include="pages\home\home.js" />

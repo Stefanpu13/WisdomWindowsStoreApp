@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>categoryQuotes</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+
+    <link href="categoryQuotes.css" rel="stylesheet" />
+    <script src="categoryQuotes.js"></script>
+</head>
+<body>
+    <div class="categoryQuotes fragment">
+        <div id="quotesByCategoryTemplate" data-win-control="WinJS.Binding.Template">
+            <div id ="categoryQuotes-container">   
+                <div id="quote-container" data-win-bind="innerText: quoteContent">
+                </div>   
+                <div id="author-container" data-win-bind="innerText: authorName"></div>         
+            </div>
+        </div>
+        <header aria-label="Header content" role="banner">
+            <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle">Welcome to categoryQuotes</span>
+            </h1>
+        </header>
+        <section aria-label="Main content" role="main">
+             <div id="quotesList" 
+                data-win-control="WinJS.UI.FlipView" 
+                data-win-options="{
+                itemDataSource: ViewModels.categoriesQuotesList.dataSource,
+                itemTemplate: select('#quotesByCategoryTemplate')}">  
+            </div> 
+           
+        </section>
+    </div>
+</body>
+</html>
