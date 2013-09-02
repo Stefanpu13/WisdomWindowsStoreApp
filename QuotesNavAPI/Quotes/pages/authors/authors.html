@@ -11,13 +11,16 @@
 
     <link href="authors.css" rel="stylesheet" />
     <script src="../../js/dataRetriever.js"></script>
+    <script src="authorsCodeBehind.js"></script>
     <script src="authors.js"></script>
 </head>
 <body>
     <div class="authors fragment">
         <div id="authorsByLetterTemplate" data-win-control="WinJS.Binding.Template">
-            <div data-win-bind="innerText: name">
-            </div>            
+            <div id ="authorsList-container">
+                <div data-win-bind="innerText: name; className: quotesUrl">
+                </div>            
+            </div>
         </div>
 
         <header aria-label="Header content" role="banner">
@@ -27,13 +30,13 @@
             </h1>
         </header>
         <section aria-label="Main content" role="main">
-            <div id="output"></div>
-            <div id="lettersList" 
+            <div id="output"></div>            
+            <div id="authorsList" 
                 data-win-control="WinJS.UI.ListView" 
                 data-win-options="{
                 itemDataSource: ViewModels.authorsByLetterList.dataSource,
                 itemTemplate: select('#authorsByLetterTemplate'),
-                oniteminvoked: LettersCodeBehind.goToPageByLetterPage}">  
+                oniteminvoked: AuthorsCodeBehind.getAuthorQuotes}">  
             </div>           
         </section>
     </div>

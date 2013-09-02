@@ -65,12 +65,17 @@
     <Content Include="js\default.js" />
     <Content Include="js\navigator.js" />
     <Content Include="js\viewmodels.js" />
+    <Content Include="pages\authorQuotes\authorQuotes.css" />
+    <Content Include="pages\authorQuotes\authorQuotes.html" />
+    <Content Include="pages\authorQuotes\authorQuotes.js" />
     <Content Include="pages\authors\authors.css" />
     <Content Include="pages\authors\authors.html" />
     <Content Include="pages\authors\authors.js" />
+    <Content Include="pages\authors\authorsCodeBehind.js" />
     <Content Include="pages\categories\categories.css" />
     <Content Include="pages\categories\categories.html" />
     <Content Include="pages\categories\categories.js" />
+    <Content Include="pages\categories\categoriesCodeBehind.js" />
     <Content Include="pages\home\home.css" />
     <Content Include="pages\home\home.html" />
     <Content Include="pages\home\home.js" />
@@ -82,9 +87,6 @@
     <Content Include="pages\nointernet\nointernet.css" />
     <Content Include="pages\nointernet\nointernet.html" />
     <Content Include="pages\nointernet\nointernet.js" />
-    <Content Include="pages\singleAuthor\singleAuthor.css" />
-    <Content Include="pages\singleAuthor\singleAuthor.html" />
-    <Content Include="pages\singleAuthor\singleAuthor.js" />
     <None Include="Quotes_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

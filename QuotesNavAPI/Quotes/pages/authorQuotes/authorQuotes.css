@@ -1,0 +1,33 @@
+﻿.authorQuotes section[role=main] {
+    margin-left: 120px;
+    margin-right: 120px;
+}
+
+@media screen and (-ms-view-state: snapped) {
+    .authorQuotes section[role=main] {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media screen and (-ms-view-state: fullscreen-portrait) {
+    .authorQuotes section[role=main] {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+}
+
+#authorsQuotes-contianer {
+    width:50%;
+    height:50%;    
+    position:relative;
+}
+#quote-container {
+    position:absolute;
+    top:5%;
+}
+#author-container {
+    position:absolute;
+    bottom: 5%;
+    right:5%;
+}

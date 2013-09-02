@@ -4,40 +4,27 @@
 (function () {
     "use strict";
 
-    WinJS.UI.Pages.define("/pages/authors/authors.html", {
+    WinJS.UI.Pages.define("/pages/authorQuotes/authorQuotes.html", {
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
-        init: function (element, options) {
-            //WinJS.Binding.processAll(element, ViewModels.resetBinding());
-            WinJS.Binding.processAll(element,
-          ViewModels.getAuthors(options.selectedLetter));           
-        },
+        init: function (element, options) {          
 
+            WinJS.Binding.processAll(element,
+          ViewModels.getQuotes(options.selectedAuthors));
+        },
         ready: function (element, options) {
             // TODO: Initialize the page here.
-            
-         
         },
-        
+
         unload: function () {
             // TODO: Respond to navigations away from this page.
-            // Keep in mind that reset binding should only be called when 
-            // Returning to 'letters' view.
-            ViewModels.resetBinding(ViewModels.authorsByLetterList);
+            //ViewModels.resetBinding(ViewModels.quotesList);
         },
 
         updateLayout: function (element, viewState, lastViewState) {
             /// <param name="element" domElement="true" />
 
             // TODO: Respond to changes in viewState.
-        },
-
-        //linkClickEventHandler: function (eventInfo) {
-        //    eventInfo.preventDefault();
-        //    var link = eventInfo.target;
-        //    WinJS.Navigation.navigate(link.href);
-        //},
-
-        
+        }
     });
 })();

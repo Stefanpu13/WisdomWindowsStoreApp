@@ -29,6 +29,10 @@
 
         categoriesByLetter: [],
 
+        authorsQuotes: [],
+
+        quotes:[],
+
         getAuthorsByLetter: function (letter) {
             return WinJS.Promise.timeout(5000, WinJS.xhr({
                 url: this.baseUrl + "Authors/" + letter,
@@ -42,6 +46,20 @@
                 url: this.baseUrl + "Categories/" + letter,
                 type: "GET"
             });
+        },
+
+        getAuthorsQuotes: function (name, url) {           
+            return WinJS.Promise.timeout(5000, WinJS.xhr({
+                url: this.baseUrl + "Authors?name=" + name + "&url="+url,               
+                type: "GET",
+            }));
+        },
+
+        getCategoriesQuotes: function (name, url) {
+            return WinJS.Promise.timeout(5000, WinJS.xhr({
+                url: this.baseUrl + "Categories?name=" + name + "&url=" + url,                
+                type: "GET",
+            }));
         }
     });
 })();

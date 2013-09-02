@@ -1,4 +1,5 @@
-﻿// For an introduction to the Page Control template, see the following documentation:
+﻿/// <reference path="../../js/viewmodels.js" />
+// For an introduction to the Page Control template, see the following documentation:
 // http://go.microsoft.com/fwlink/?LinkId=232511
 (function () {
     "use strict";
@@ -9,11 +10,12 @@
 
         init: function (element, options) {
             WinJS.Binding.processAll(element,
-          ViewModels.getCategories(options.selectedLetter).then(function (success) {
-              ViewModels.loadCategories();
-          }, function (error) {
-              console.log(error.message);
-          })
+          ViewModels.getCategories(options.selectedLetter)
+          //      .then(function (success) {
+          //    ViewModels.loadCategories();
+          //}, function (error) {
+          //    console.log(error.message);
+          //})
           );
         },
         ready: function (element, options) {
@@ -25,7 +27,7 @@
             // TODO: Respond to navigations away from this page.
             // Keep in mind that reset binding should only be called when 
             // Returning to 'letters' view.
-            ViewModels.resetBinding();
+            ViewModels.resetBinding(ViewModels.categoriesByLetterList);
         },
 
         updateLayout: function (element, viewState, lastViewState) {

@@ -16,3 +16,10 @@
         margin-right: 100px;
     }
 }
+#categoriesList-container {
+    width: 120px;
+    height:80px;
+    margin: 5px;
+    -ms-grid-column: 1;
+
+}

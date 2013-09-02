@@ -19,7 +19,7 @@
 
         unload: function () {
             // TODO: Respond to navigations away from this page.
-            var elems = WinJS.Utilities.query('.defaultClass');
+            //var elems = WinJS.Utilities.query('.defaultClass');
         },
 
         updateLayout: function (element, viewState, lastViewState) {

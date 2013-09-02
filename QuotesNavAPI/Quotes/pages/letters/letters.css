@@ -16,3 +16,10 @@
         margin-right: 100px;
     }
 }
+#letters-container{
+    height:50px;
+    width:100px;
+    margin: 5px;
+    -ms-grid-column: 1;
+}
+
