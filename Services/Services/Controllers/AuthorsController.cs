@@ -59,7 +59,7 @@ namespace Services.Controllers
             return categoryContent;
         }
 
-        public AuthorModel GetAuthorByName(string name, string url) {           
+        public AuthorModel GetAuthorByName(string name, string url) {
 
             List<string> quotes = new List<string>();
             var author = new AuthorModel
@@ -72,9 +72,12 @@ namespace Services.Controllers
                 GetHtml(url);
             html.LoadHtml(htmlToLoad);
 
+            var titleNode = html.DocumentNode.SelectNodes("//title");
+            string authorName = GetAuthorName(titleNode);
+            author.Name = authorName;
             // 'li' that is descendent of 'ul', that is descendant
             //of 'div' with class ='post-outer'.
-            var result = 
+            var result =
                 html.DocumentNode.
                 SelectNodes("//div[@class='post-outer']//ul//li");
 
@@ -98,6 +101,20 @@ namespace Services.Controllers
             myResponse.Close();
 
             return result;
+        }
+
+        private string GetAuthorName(HtmlNodeCollection titleNode)
+        {
+            string authorName = null;
+            if (titleNode.Count > 0)
+            {
+                var innerText = titleNode.FirstOrDefault().InnerText;
+                var dashIndex = innerText.IndexOf(" -");
+                var firstPartOfTitle = innerText.Substring(0, dashIndex);
+                authorName = firstPartOfTitle.Replace("Цитати на ", "");
+            }
+            return authorName;
+
         }
     }
 }
