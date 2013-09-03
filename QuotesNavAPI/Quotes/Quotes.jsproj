@@ -96,6 +96,9 @@
     <Content Include="pages\searchResults\searchResults.css" />
     <Content Include="pages\searchResults\searchResults.html" />
     <Content Include="pages\searchResults\searchResults.js" />
+    <Content Include="pages\shareContent\shareTarget.css" />
+    <Content Include="pages\shareContent\shareTarget.html" />
+    <Content Include="pages\shareContent\shareTarget.js" />
     <None Include="Quotes_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

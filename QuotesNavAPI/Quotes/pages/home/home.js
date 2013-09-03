@@ -16,7 +16,11 @@
             // TODO: Initialize the page here.
             WinJS.Utilities.query("a").listen("click",
                 EventHаndlers.linkClickEventHandler, false);
+
             EventHаndlers.attachAllHandlers();
+
+            var printManager = Windows.Graphics.Printing.PrintManager.getForCurrentView();
+            printManager.onprinttaskrequested = Print.onPrintTaskRequested;
         },
 
         unload: function () {
