@@ -1,4 +1,5 @@
-﻿/// <reference path="//Microsoft.WinJS.1.0/js/base.js" />
+﻿/// <reference path="appCommands.js" />
+/// <reference path="//Microsoft.WinJS.1.0/js/base.js" />
 (function () {
 
     var linkClickEventHandler = function (eventInfo) {
@@ -16,7 +17,17 @@
         WinJS.Navigation.navigate(link.href);
     }
 
+    var attachCreateNewCollection = function (eventInfo) {
+        var newCollectionButton = document.getElementById('createNewCollection');
+        newCollectionButton.addEventListener('click', Commands.createCollection);
+    }
+
+    var attachAllHandlers = function (element) {
+        attachCreateNewCollection();
+    };
+
     WinJS.Namespace.define("EventHаndlers", {
-         linkClickEventHandler: linkClickEventHandler
+        linkClickEventHandler: linkClickEventHandler,
+        attachAllHandlers: attachAllHandlers
     });
 })();

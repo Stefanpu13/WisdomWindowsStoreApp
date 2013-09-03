@@ -7,16 +7,20 @@
     WinJS.UI.Pages.define("/pages/authors/authors.html", {
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
-        init: function (element, options) {
-            //WinJS.Binding.processAll(element, ViewModels.resetBinding());
+        init: function (element, options) {            
             WinJS.Binding.processAll(element,
-          ViewModels.getAuthors(options.selectedLetter));           
+            ViewModels.getAuthors(options.selectedLetter));
+                
         },
 
         ready: function (element, options) {
             // TODO: Initialize the page here.
             
-         
+        },
+
+        processed: function (element, options) {
+            
+      
         },
         
         unload: function () {
@@ -31,13 +35,5 @@
 
             // TODO: Respond to changes in viewState.
         },
-
-        //linkClickEventHandler: function (eventInfo) {
-        //    eventInfo.preventDefault();
-        //    var link = eventInfo.target;
-        //    WinJS.Navigation.navigate(link.href);
-        //},
-
-        
     });
 })();

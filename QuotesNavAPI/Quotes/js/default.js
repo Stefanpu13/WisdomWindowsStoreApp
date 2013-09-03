@@ -1,4 +1,5 @@
-﻿// For an introduction to the Navigation template, see the following documentation:
+﻿/// <reference path="eventHandlers.js" />
+// For an introduction to the Navigation template, see the following documentation:
 // http://go.microsoft.com/fwlink/?LinkId=232506
 (function () {
     "use strict";
@@ -14,6 +15,8 @@
             if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
                 // TODO: This application has been newly launched. Initialize
                 // your application here.
+
+               
             } else {
                 // TODO: This application has been reactivated from suspension.
                 // Restore application state here.

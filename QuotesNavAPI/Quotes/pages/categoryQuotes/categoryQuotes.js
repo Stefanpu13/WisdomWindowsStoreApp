@@ -17,6 +17,7 @@
 
         unload: function () {
             // TODO: Respond to navigations away from this page.
+            ViewModels.resetBinding(ViewModels.categoriesQuotesList);
         },
 
         updateLayout: function (element, viewState, lastViewState) {

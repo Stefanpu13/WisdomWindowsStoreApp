@@ -11,15 +11,17 @@
 
     <link href="/css/default.css" rel="stylesheet" />
     <link href="/pages/home/home.css" rel="stylesheet" />
+    <script src="../../js/appCommands.js"></script>
     <script src="/pages/home/home.js"></script>
+    
 </head>
 <body>
     <!-- The content that will be loaded and displayed. -->
     <div class="fragment homepage">
         <div id="randomTemplate" data-win-control="WinJS.Binding.Template">
             <div style="width:inherit; height:inherit;">
-                <p data-win-bind="innerText: quote"></p>
-                <h4 style="text-align:right" data-win-bind="innerText: author"></h4>
+                <p id="quote-container" data-win-bind="innerText: quote"></p>
+                <h4 id="author-container" style="text-align:right" data-win-bind="innerText: author"></h4>
             </div>            
         </div>
 
@@ -38,9 +40,10 @@
                 data-win-control="WinJS.UI.ListView" 
                 data-win-options="{
                 itemDataSource: ViewModels.randomQuoteList.dataSource,
-                itemTemplate: select('#randomTemplate')}">  
+                itemTemplate: select('#randomTemplate'),
+                onselectionchanged: Commands.addItem }">  
             </div>  
         </section>
-    </div>
+    </div>   
 </body>
 </html>

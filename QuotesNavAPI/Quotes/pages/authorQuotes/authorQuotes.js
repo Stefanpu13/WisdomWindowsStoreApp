@@ -7,17 +7,22 @@
     WinJS.UI.Pages.define("/pages/authorQuotes/authorQuotes.html", {
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
-        init: function (element, options) { 
+        init: function (element, options) {
             WinJS.Binding.processAll(element,
           ViewModels.getAuthorsQuotes(options.selectedAuthors));
+            
         },
         ready: function (element, options) {
-            // TODO: Initialize the page here.            
+            // TODO: Initialize the page here.
+        },
+
+        processed: function (element, options) {
+            //QuotesHandlers.addQuotesHandlers(element);
         },
 
         unload: function () {
             // TODO: Respond to navigations away from this page.
-            //ViewModels.resetBinding(ViewModels.quotesList);
+            ViewModels.resetBinding(ViewModels.authorsQuotesList);
         },
 
         updateLayout: function (element, viewState, lastViewState) {

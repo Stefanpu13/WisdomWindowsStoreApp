@@ -6,16 +6,17 @@
 
     <!-- WinJS references -->
     <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
-    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>    
     <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
 
     <link href="authorQuotes.css" rel="stylesheet" />
+    <script src="authorsQuotesHandlers.js"></script>
     <script src="authorQuotes.js"></script>
 </head>
 <body>
     <div class="authorQuotes fragment">
         <div id="quotesByAuthorTemplate" data-win-control="WinJS.Binding.Template">
-            <div id ="authorsQuotes-contianer">   
+            <div id ="authorsQuotesContainer" class="container">   
                 <div id="quote-container" data-win-bind="innerText: content">
                 </div>   
                 <div id="author-container" data-win-bind="innerText: author"></div>         

@@ -21,10 +21,18 @@
       </VisualElements>
       <Extensions>
         <Extension Category="windows.search" />
+        <Extension Category="windows.fileTypeAssociation">
+          <FileTypeAssociation Name="favorites">
+            <SupportedFileTypes>
+              <FileType>.txt</FileType>
+            </SupportedFileTypes>
+          </FileTypeAssociation>
+        </Extension>
       </Extensions>
     </Application>
   </Applications>
   <Capabilities>
+    <Capability Name="documentsLibrary" />
     <Capability Name="internetClient" />
   </Capabilities>
 </Package>

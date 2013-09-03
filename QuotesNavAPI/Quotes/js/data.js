@@ -25,6 +25,8 @@
 
         letters: letters,
 
+        selectedLetters:[],
+
         randomQuote: [],
 
         authorsByLetter: [],
@@ -35,7 +37,9 @@
 
         categoriesQuotes: [],
 
-        quotes:[],
+        quotes: [],
+
+        collectionItems:[],
 
         getAuthorsByLetter: function (letter) {
             return WinJS.Promise.timeout(5000, WinJS.xhr({

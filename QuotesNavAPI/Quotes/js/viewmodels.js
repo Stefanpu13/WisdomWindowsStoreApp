@@ -10,7 +10,11 @@
     var authorsQuotesList = new WinJS.Binding.List([]);
     var categoriesQuotesList = new WinJS.Binding.List([]);
     var randomQuoteList = new WinJS.Binding.List([]);
-    var error = new WinJS.Binding.define(Models.SearchError);    
+    var error = new WinJS.Binding.define(Models.SearchError);
+
+    var lettersChanged = function (first, second) {
+        return first.join() != second.join();
+    }
 
     var decodeElements = function (text) {
         var pattern = /\&#\d+;/g;        
@@ -98,8 +102,10 @@
     }
 
     var getAuthors = function (letters) {
-        // Clean authors from previous request.
-        Data.authorsByLetter = [];
+        // Clean authors from previous request.        
+
+        if (lettersChanged(letters, Data.selectedLetters)) {
+            Data.authorsByLetter = [];
             var allPromises = [];
             var authors;
             for (var i = 0; i < letters.length; i++) {
@@ -114,18 +120,14 @@
                     });
                 allPromises.push(promise);
             }
-
             return WinJS.Promise.join(allPromises).done(function () {
                 if (Data.authorsByLetter.length == 0) {
-                    //return new WinJS.Promise(function (complete, error) {
-                    //    error("Не бяха открити автори с буква " + letter + ".");
-                    //});
                 }
                 else {
                     ViewModels.loadAuthors();
                 }
             });
-        
+        }
     }
 
     var getCategories = function (letters) {

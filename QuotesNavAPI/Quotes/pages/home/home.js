@@ -16,9 +16,7 @@
             // TODO: Initialize the page here.
             WinJS.Utilities.query("a").listen("click",
                 EventHаndlers.linkClickEventHandler, false);
-
-            var printManager = Windows.Graphics.Printing.PrintManager.getForCurrentView();
-            printManager.onprinttaskrequested = Print.onPrintTaskRequested;
+            EventHаndlers.attachAllHandlers();
         },
 
         unload: function () {
@@ -32,6 +30,9 @@
             var appData = Windows.Storage.ApplicationData.current;
             var roamingSettings = appData.roamingSettings;
             //roamingSettings.values["userName"] = nameInput.value;
-        }
+        },
+
+ 
+    
     });
 })();
