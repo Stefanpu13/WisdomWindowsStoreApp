@@ -21,6 +21,9 @@
 
             var printManager = Windows.Graphics.Printing.PrintManager.getForCurrentView();
             printManager.onprinttaskrequested = Print.onPrintTaskRequested;
+
+            var dataTransferManager = Windows.ApplicationModel.DataTransfer.DataTransferManager.getForCurrentView();
+            dataTransferManager.addEventListener("datarequested", Share.shareTextHandler);
         },
 
         unload: function () {
@@ -35,8 +38,5 @@
             var roamingSettings = appData.roamingSettings;
             //roamingSettings.values["userName"] = nameInput.value;
         },
-
- 
-    
     });
 })();

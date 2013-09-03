@@ -11,7 +11,6 @@
 
     var app = WinJS.Application;
     var share;
-    var quote;
 
     //function onShareSubmit() {
     //    document.querySelector(".progressindicators").style.visibility = "visible";
@@ -21,15 +20,11 @@
     //    share.reportCompleted();
     //}
 
-    var randomQuote = function (currentQuote) {
-        currentQuote = quote;
-    }
-
     var shareTextHandler = function (event) {
         var request = event.request;
         request.data.properties.title = "Сподели мисълта за деня";
         request.data.properties.description = "A demonstration that shows how to share.";
-        request.data.setText(quote);
+        request.data.setText(Commands.addItemToShare());
     };
 
     // This function responds to all application activations.
@@ -60,7 +55,6 @@
 
     WinJS.Namespace.define("Share", {
         shareTextHandler: shareTextHandler,
-        randomQuote: randomQuote
     })
 
     app.start();

@@ -25,7 +25,14 @@
                     }
                 });
             });
-        
+    }
+
+    var addItemToShare = function () {
+        for (var i = 0; i < Data.collectionItems.length; i++) {
+            var quote = JSON.stringify(Data.collectionItems[i]);
+            Data.collectionItems = [];
+            return quote;
+        }
     }
 
     var addItem = function (item) {
@@ -38,6 +45,7 @@
 
     WinJS.Namespace.define('Commands', {
         createCollection: createCollection,
+        addItemToShare: addItemToShare,
         addItem: addItem
     });
 })();

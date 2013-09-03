@@ -1,4 +1,8 @@
-﻿.win-flipview {
+﻿html, body {
+    background-color: #661BFF;
+}
+
+.win-flipview {
     width:1000px;
 }
 
