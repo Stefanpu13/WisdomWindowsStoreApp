@@ -24,6 +24,8 @@
 
             var dataTransferManager = Windows.ApplicationModel.DataTransfer.DataTransferManager.getForCurrentView();
             dataTransferManager.addEventListener("datarequested", Share.shareTextHandler);
+
+            //ReloadRandom.getNewRandomQuote(element);     
         },
 
         unload: function () {

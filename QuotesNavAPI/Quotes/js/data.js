@@ -39,6 +39,8 @@
 
         quotes: [],
 
+        currentDisplayedItem: [],
+
         collectionItems:[],
 
         getAuthorsByLetter: function (letter) {

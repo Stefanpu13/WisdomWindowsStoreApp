@@ -10,6 +10,8 @@
     var authorsQuotesList = new WinJS.Binding.List([]);
     var categoriesQuotesList = new WinJS.Binding.List([]);
     var randomQuoteList = new WinJS.Binding.List([]);
+    var currentDisplayedItem = new WinJS.Binding.List([]);
+    var currentCollection = new WinJS.Binding.List([]);
     var error = new WinJS.Binding.define(Models.SearchError);
 
     var lettersChanged = function (first, second) {
@@ -158,6 +160,10 @@
         });
     }
 
+    var getRandomAtInterval = function () {
+        setInterval(function () { getRandom(); }, 4000);
+    }
+
     var getRandom = function () {
         var allPromises = [];
         var quote;
@@ -180,7 +186,25 @@
         for (var i = 0; i < letters.length; i++) {
             lettersList.push(letters[i]);
         }
-    }    
+    }
+
+    var loadcurrentDisplayedItem = function (item) {
+        var currentCount = currentDisplayedItem.dataSource.list.length;
+        currentDisplayedItem.dataSource.list.splice(0, currentCount);
+
+        Data.currentDisplayedItem.push(item);
+        currentDisplayedItem.push(Data.currentDisplayedItem[0]);
+
+    }
+
+    var loadCurrentCollection = function () {
+        //var currentCount = currentCollection.dataSource.list.length;
+        //currentCollection.dataSource.list.splice(0, currentCount);
+        var collection = Data.collectionItems;
+        for (var i = 0; i < collection.length; i++) {
+            currentCollection.push(collection[i]);
+        }
+    }
 
     var loadAuthorsByLetter = function () {
 
@@ -238,13 +262,16 @@
         loadAuthors: loadAuthorsByLetter,
         loadCategories: loadCategoriesByLetter,
         loadAuthorsQuotes: loadAuthorsQuotes,
-        loadCategoriesQuotes:loadCategoriesQuotes,
+        loadCategoriesQuotes: loadCategoriesQuotes,
+        loadcurrentDisplayedItem: loadcurrentDisplayedItem,
+        loadCurrentCollection: loadCurrentCollection,
         resetBinding:resetBinding,
         lettersList: lettersList,
         authorsByLetterList: authorsByLetterList,
         categoriesByLetterList: categoriesByLetterList,
         authorsQuotesList: authorsQuotesList,
         categoriesQuotesList: categoriesQuotesList,
-        randomQuoteList: randomQuoteList
+        randomQuoteList: randomQuoteList,
+        currentDisplayedItem: currentDisplayedItem
     });
 })();

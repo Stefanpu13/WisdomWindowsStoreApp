@@ -86,6 +86,7 @@
     <Content Include="pages\home\home.html" />
     <Content Include="pages\home\home.js" />
     <Content Include="default.html" />
+    <Content Include="pages\home\homeCodeBehind.js" />
     <Content Include="pages\letters\letters.css" />
     <Content Include="pages\letters\letters.html" />
     <Content Include="pages\letters\letters.js" />

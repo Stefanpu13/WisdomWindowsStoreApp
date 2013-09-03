@@ -22,6 +22,16 @@
         newCollectionButton.addEventListener('click', Commands.createCollection);
     }
 
+    var attachOpenCollection = function () {
+        var openCollection = document.getElementById('openCollection');
+        openCollection.addEventListener('click', Commands.openCollection);
+    }
+
+    var attachPlayColection = function () {
+        var openCollection = document.getElementById('startCollectionShow');
+        openCollection.addEventListener('click', Commands.playCollection);
+    }
+
     var attachAllHandlers = function (element) {
         attachCreateNewCollection();
     };
