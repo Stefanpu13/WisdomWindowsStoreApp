@@ -12,8 +12,6 @@
     <description>A .NET library to select items from a node tree based on a CSS selector. The default implementation is based on HTMLAgilityPack and selects from HTML documents. There over 140 unit tests - see below for more information. The tests are based on the jQuery selector engine tests. At this time, the library is BETA quality.</description>
     <summary>A .NET library to select items from a node tree based on a CSS selector.</summary>
     <releaseNotes>Removed manex dependency, added linqbridge.</releaseNotes>
-    <copyright />
-    <language />
     <tags>htmlagility fizzler</tags>
     <dependencies>
       <group targetFramework=".NETFramework2.0">
@@ -24,10 +22,5 @@
         <dependency id="HtmlAgilityPack" version="1.4.6" />
       </group>
     </dependencies>
-    <references>
-      <reference file="Fizzler.dll" />
-      <reference file="Fizzler.Systems.HtmlAgilityPack.dll" />
-      <reference file="Fizzler.Sandbox.dll" />
-    </references>
   </metadata>
 </package>
