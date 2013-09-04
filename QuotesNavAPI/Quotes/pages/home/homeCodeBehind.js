@@ -1,18 +1,27 @@
 ﻿/// <reference path="//Microsoft.WinJS.1.0/js/base.js" />
 (function () {
+    var randomQuoteIntervalSet = false;    
 
-    var getNewRandomQuote = function () {
-        setInterval(function () { bind(); }, 5000);
+    var getNewRandomQuote = function (element) {
+        if (!randomQuoteIntervalSet) {
+            setInterval(function () {
+                bindRandomQuote(element);
+            }, 4000);
+            randomQuoteIntervalSet = true;            
+        }
+        
     }
 
-    var bind = function (element) {
-        WinJS.Binding.processAll(element, ViewModels.getRandomQuote().
-            done(function (success) {
-                ViewModels.loadRandomQuote();
-            }));
+    var bindRandomQuote = function (element) {
+        ViewModels.getRandomQuote().
+            then(function (success) {                
+                ViewModels.loadRandomQuote(); 
+            });
     }
 
     WinJS.Namespace.define('ReloadRandom', {
         getNewRandomQuote: getNewRandomQuote
     })
+
+    WinJS.Namespace.define('Processes', {})
 })();

@@ -11,7 +11,18 @@
         }
    }
 
+   var createGeneralPromiseErrorHandler = function () {
+       WinJS.Promise.onerror = errorHandler
+   }
+
+   var errorHandler = function (error) {
+       if (error) {
+           console.log(error);
+       }
+   }
+
    WinJS.Namespace.define('Errors', {
-       connectivityOk: isConnected
+       connectivityOk: isConnected,
+       generalPromiseErrorHandler: createGeneralPromiseErrorHandler
    })
 })();

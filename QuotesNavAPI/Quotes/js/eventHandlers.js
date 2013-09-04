@@ -32,8 +32,11 @@
         openCollection.addEventListener('click', Commands.playCollection);
     }
 
+    //var errorHandler = function () { }
+
     var attachAllHandlers = function (element) {
         attachCreateNewCollection();
+        Errors.generalPromiseErrorHandler();
     };
 
     WinJS.Namespace.define("EventHаndlers", {

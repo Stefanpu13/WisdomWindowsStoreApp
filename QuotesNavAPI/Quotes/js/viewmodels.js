@@ -160,21 +160,21 @@
         });
     }
 
-    var getRandomAtInterval = function () {
-        setInterval(function () { getRandom(); }, 4000);
-    }
-
     var getRandom = function () {
-        var allPromises = [];
+        
         var quote;
         var promise = Data.getRandomQuote().then(function (result) {
             quote = JSON.parse("[" + result.responseText + "]")[0];
-            Data.randomQuote.pop();
-            Data.randomQuote.push(new Models.RandomModel(quote.quote, quote.author));
+            quote.quote = decodeElements(quote.quote);
+            if (Data.randomQuote.length == 0) {
+                Data.randomQuote.push(new Models.RandomModel(quote.quote, quote.author));
+            } else {
+                Data.randomQuote[0].quote = quote.quote;
+                Data.randomQuote[0].author = quote.author
+            }
         });
-        allPromises.push(promise);
 
-        return WinJS.Promise.join(allPromises);
+        return promise;
     }
 
     var loadLetters = function () {
@@ -239,10 +239,13 @@
     }
 
     var loadRandomQuote = function () {
+        
+        var currentCount = randomQuoteList.dataSource.list.length;
+        randomQuoteList.dataSource.list.splice(0, currentCount);        
 
         var quote = Data.randomQuote;
         for (var i = 0; i < quote.length; i++) {
-            randomQuoteList.push(quote[i]);
+            randomQuoteList.push(quote[i]);            
         }
     }
 
