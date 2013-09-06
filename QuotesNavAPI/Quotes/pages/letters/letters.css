@@ -16,10 +16,34 @@
         margin-right: 100px;
     }
 }
+
 #letters-container{
-    height:50px;
+    height:100px;
     width:100px;
     margin: 5px;
+    background-color: #04518C;
+    border:none;
     -ms-grid-column: 1;
+}
+
+#letters-container > div{
+    margin:1%;
+    padding:1%;
+    height:100%;
+    width:100%;
+    font-size:20px;
+    font-weight: bold;
+    text-align:center;
+    position:relative;
+	top: 35%;
+}
+
+.win-item {
+      background-color: #04518C;
+}
+
+.win-listview {
+    overflow: hidden;
+    height: 600px;
 }
 

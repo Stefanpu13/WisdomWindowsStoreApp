@@ -1,5 +1,36 @@
 ﻿html, body {
-    background-color: #661BFF;
+    background-color: #003056;
+	color: #F2D03B;
+}
+
+div #lettersListTemplate > div{
+	width:100%;
+	height:100%;
+}
+
+#quote-container{
+	margin:1%;
+	padding:1%;
+}
+
+#author-container{
+	margin:1%;
+	padding:1%;
+}
+
+div #dailyQuote{
+	width:25%;
+	height:25%;
+    margin:1%;
+    padding:1%;
+	background-color:#04518C;
+	color: #F2D03B;
+}
+
+div #randomList .win-container{
+	width:100%;
+	height:100%;
+	background-color:#04518C;
 }
 
 .win-flipview {
@@ -9,6 +40,39 @@
 #contenthost {
     height: 100%;
     width: 100%;
+}
+
+.win-listview:not(.win-selectionstylefilled) .win-container.win-selected .win-selectionborder {
+    border-color: #008EBF;
+}
+
+.win-listview.win-selectionstylefilled .win-selected .win-selectionbackground {
+    border-color: #008EBF;
+}
+
+.win-listview.win-selectionstylefilled .win-selected:hover .win-selectionbackground {
+    background-color: #47D9BF;
+}
+
+.win-listview:not(.win-selectionstylefilled) .win-container.win-selected:hover .win-selectionborder {
+    border-color: #47D9BF;
+}
+
+.win-ui-light .win-selectionhint {
+    color: #008EBF;
+}
+.win-listview:not(.win-selectionstylefilled) .win-selectioncheckmarkbackground {
+    border-top-color: #008EBF;
+    border-right-color: #008EBF;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+}
+
+.win-listview:not(.win-selectionstylefilled) .win-container.win-selected:hover .win-selectioncheckmarkbackground {
+    border-top-color: #47D9BF;
+    border-right-color: #47D9BF;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
 }
 
 .fragment {
@@ -30,6 +94,8 @@
         .fragment header[role=banner] .win-backbutton {
             -ms-grid-column: 2;
             margin-top: 59px;
+			color: #F2D03B;
+			border-color: #F2D03B;
         }
 
         .fragment header[role=banner] .titlearea {
@@ -45,6 +111,26 @@
         -ms-grid-row: 2;
         height: 100%;
         width: 100%;
+        display:inline-block;
+    }
+	
+	 .fragment section[role=main] > p  {
+        width:25%;
+		height:25%;
+		display:inline-block;
+		text-align:center;
+		background-color:#04518C;
+		margin:1%;
+		padding:1%;
+    }
+	
+	 .fragment section[role=main] > p > a {
+        position:relative;
+		top: 45%;
+		color:#F2D03B;
+		font-size:20px;
+        font-weight:bold;
+		text-decoration: none;
     }
 
 #navbar {
@@ -64,6 +150,8 @@
             margin-left: 5px;
             margin-right: 5px;
             margin-top: 76px;
+			color: #F2D03B;
+			border-color: #F2D03B;
         }
 
             .fragment header[role=banner] .win-backbutton:disabled {

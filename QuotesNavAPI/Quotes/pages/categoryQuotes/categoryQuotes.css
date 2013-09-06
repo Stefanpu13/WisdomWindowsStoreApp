@@ -21,11 +21,15 @@
     width:50%;
     height:50%;    
     position:relative;
+    font-size:18px;
+    font-weight:bold;
 }
+
 #quote-container {
     position:absolute;
     top:5%;
 }
+
 #author-container {
     position:absolute;
     bottom: 5%;
