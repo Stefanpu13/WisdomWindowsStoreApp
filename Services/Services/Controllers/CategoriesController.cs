@@ -74,21 +74,15 @@ namespace Services.Controllers
             // 'li' that is descendent of 'ul', that is descendant
             //of 'div' with class ='post-outer'.
             var quotesFound = html.DocumentNode.SelectNodes("//div[@class='post-outer']//ul//li");
-            var authors = html.DocumentNode.SelectNodes("//div[@class='post-outer']//div[@align]").Where(x => x.InnerHtml != "<br>\n").ToList<HtmlNode>();
 
             var title = html.DocumentNode.SelectNodes("//title");
-
-            if (authors.Count != quotesFound.Count)
-            {
-                authors.Add(HtmlNode.CreateNode("<a>Неизвестен</a>"));
-            }
 
             var categoryTitle = GetName(title);
             category.CategoryTitle = categoryTitle;
 
             for (int i = 0; i < quotesFound.Count; i++)
             {
-                var authorsName = authors[i].FirstChild;
+                var authorsName = quotesFound[i].LastChild;
                 category.Quotes.Add(quotesFound[i].InnerHtml, authorsName.InnerHtml);
             }
 
