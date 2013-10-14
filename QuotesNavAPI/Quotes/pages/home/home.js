@@ -7,9 +7,9 @@
         // populates the page elements with the app's data.
 
         init: function (element, options) {
-            //WinJS.Binding.processAll(element, ViewModels.getRandomQuote().then(function (success) {
-            //    ViewModels.loadRandomQuote();
-            //}));
+            WinJS.Binding.processAll(element, ViewModels.getRandomQuote().then(function (success) {
+                ViewModels.loadRandomQuote();
+            }));
         },
 
         ready: function (element, options) {

@@ -1,6 +1,7 @@
 ﻿.homepage section[role=main] {
     margin-left: 120px;
     margin-right: 120px;
+    display:-ms-flexbox;
 }
 
 #randomList {
@@ -8,17 +9,55 @@
     height:100%;
 }
 
+#day {
+    font-size:20px;
+    font-weight:bold;
+    margin: 0;
+    padding:0;
+}
 
 @media screen and (-ms-view-state: snapped) {
     .homepage section[role=main] {
+        display:list-item;
         margin-left: 20px;
         margin-right: 20px;
+    }
+
+     .fragment section[role=main] > p  {
+        width:60%;
+		height:20%;
+    }
+	
+	 .fragment section[role=main] > p > a {
+        position:relative;
+		top: 20%;
+    }
+
+    div #dailyQuote {
+        width: 60%;
+        height: 20%;
     }
 }
 
 @media screen and (-ms-view-state: fullscreen-portrait) {
     .homepage section[role=main] {
+        display:list-item;
         margin-left: 100px;
         margin-right: 100px;
+    }
+
+    .fragment section[role=main] > p  {
+        width:60%;
+		height:15%;
+    }
+	
+	 .fragment section[role=main] > p > a {
+        position:relative;
+		top: 45%;
+    }
+
+    div #dailyQuote {
+        width: 60%;
+        height: 15%;
     }
 }

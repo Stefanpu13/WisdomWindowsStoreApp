@@ -166,7 +166,7 @@
         var promise = Data.getRandomQuote().then(function (result) {
             quote = JSON.parse("[" + result.responseText + "]")[0];
             quote.quote = decodeElements(quote.quote);
-            if (Data.randomQuote.length == 0) {
+            if (Data.randomQuote.length === 0) {
                 Data.randomQuote.push(new Models.RandomModel(quote.quote, quote.author));
             } else {
                 Data.randomQuote[0].quote = quote.quote;

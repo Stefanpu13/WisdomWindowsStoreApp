@@ -17,25 +17,25 @@
         WinJS.Navigation.navigate(link.href);
     }
 
-    var attachCreateNewCollection = function (eventInfo) {
-        var newCollectionButton = document.getElementById('createNewCollection');
-        newCollectionButton.addEventListener('click', Commands.createCollection);
-    }
+    //var attachCreateNewCollection = function (eventInfo) {
+    //    var newCollectionButton = document.getElementById('createNewCollection');
+    //    newCollectionButton.addEventListener('click', Commands.createCollection);
+    //}
 
-    var attachOpenCollection = function () {
-        var openCollection = document.getElementById('openCollection');
-        openCollection.addEventListener('click', Commands.openCollection);
-    }
+    //var attachOpenCollection = function () {
+    //    var openCollection = document.getElementById('openCollection');
+    //    openCollection.addEventListener('click', Commands.openCollection);
+    //}
 
-    var attachPlayColection = function () {
-        var openCollection = document.getElementById('startCollectionShow');
-        openCollection.addEventListener('click', Commands.playCollection);
-    }
+    //var attachPlayColection = function () {
+    //    var openCollection = document.getElementById('startCollectionShow');
+    //    openCollection.addEventListener('click', Commands.playCollection);
+    //}
 
     //var errorHandler = function () { }
 
     var attachAllHandlers = function (element) {
-        attachCreateNewCollection();
+        //attachCreateNewCollection();
         Errors.generalPromiseErrorHandler();
     };
 

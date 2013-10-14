@@ -46,7 +46,7 @@
   <PropertyGroup>
     <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
     <TargetPlatformVersion>8.0</TargetPlatformVersion>
-    <DefaultLanguage>en-US</DefaultLanguage>
+    <DefaultLanguage>bg</DefaultLanguage>
     <PackageCertificateKeyFile>Quotes_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <ItemGroup>
@@ -54,10 +54,13 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <Content Include="css\default.css" />
+    <Content Include="images\abstract_planet-wallpaper-1280x800.jpg" />
     <Content Include="images\logo.png" />
-    <Content Include="images\smalllogo.png" />
-    <Content Include="images\splashscreen.png" />
-    <Content Include="images\storelogo.png" />
+    <Content Include="images\small.png" />
+    <Content Include="images\splash.png" />
+    <Content Include="images\store.png" />
+    <Content Include="images\wide.png" />
+    <Content Include="images\wide1.jpg" />
     <Content Include="js\appCommands.js" />
     <Content Include="js\errors.js" />
     <Content Include="js\eventHandlers.js" />

@@ -6,7 +6,7 @@
         if (!randomQuoteIntervalSet) {
             setInterval(function () {
                 bindRandomQuote(element);
-            }, 4000);
+            }, 20000);
             randomQuoteIntervalSet = true;            
         }
         

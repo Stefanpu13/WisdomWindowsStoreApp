@@ -20,45 +20,32 @@
     <!-- The content that will be loaded and displayed. -->
     <div class="fragment homepage">
         <div id="randomTemplate" data-win-control="WinJS.Binding.Template">
-            <div style="width:inherit; height:inherit;">
+            <div id="container" style="width:inherit; height:inherit;">
                 <p id="quote-container" data-win-bind="innerText: quote"></p>
                 <h4 id="author-container" style="text-align:right" data-win-bind="innerText: author"></h4>
-            </div>            
-        </div>
-
-        <div id="currentDisplayedItemTemplate" data-win-control="WinJS.Binding.Template">
-            <div style="width:inherit; height:inherit;">
-                <p id="P1" data-win-bind="innerText: content"></p>
-                <h4 id="H1" style="text-align:right" data-win-bind="innerText: author"></h4>
             </div>            
         </div>
 
         <header aria-label="Header content" role="banner">
             <button class="win-backbutton" aria-label="Back" disabled type="button"></button>
             <h1 class="titlearea win-type-ellipsis">
-                <span class="pagetitle">Welcome to Quotes!</span>
+                <span class="pagetitle">Мъдри мисли</span>
             </h1>
         </header>
         <section aria-label="Main content" role="main">
-            <p><a href="/pages/letters/letters.html" id="authors">Търсене по име на автор</a></p>
-            <p><a href="/pages/letters/letters.html" id="categories">Търсене по категория</a></p>
             <div id="dailyQuote">
-                <p>Цитат на деня</p>
+                <p id="day">Цитат на деня</p>
 			    <div id="randomList" 
                     data-win-control="WinJS.UI.ListView" 
                     data-win-options="{
                     itemDataSource: ViewModels.randomQuoteList.dataSource,
                     itemTemplate: select('#randomTemplate'),
-                    onselectionchanged: Commands.addItem }">
+                    onselectionchanged: Commands.addItem ,
+                    selectionMode: 'none'}">
                 </div>
 			</div>
-            <div id="collectionList" 
-                data-win-control="WinJS.UI.ListView" 
-                data-win-options="{
-                itemDataSource: ViewModels.currentDisplayedItem.dataSource,
-                itemTemplate: select('#currentDisplayedItemTemplate'),
-                onselectionchanged: Commands.addItem }">  
-            </div>
+            <p><a href="/pages/letters/letters.html" id="authors">Търсене по име на автор</a></p>
+            <p><a href="/pages/letters/letters.html" id="categories">Търсене по категория</a></p>
         </section>
     </div>   
 </body>

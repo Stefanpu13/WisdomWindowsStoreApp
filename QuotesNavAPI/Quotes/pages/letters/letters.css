@@ -21,9 +21,12 @@
     height:100px;
     width:100px;
     margin: 5px;
-    background-color: #04518C;
     border:none;
     -ms-grid-column: 1;
+}
+
+.win-listview :not(.win-footprint).win-container {
+    background: rgba(4, 81, 140, .3);
 }
 
 #letters-container > div{
@@ -38,9 +41,6 @@
 	top: 35%;
 }
 
-.win-item {
-      background-color: #04518C;
-}
 
 .win-listview {
     overflow: hidden;

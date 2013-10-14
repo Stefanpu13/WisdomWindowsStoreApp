@@ -4,7 +4,7 @@
   <Properties>
     <DisplayName>Quotes</DisplayName>
     <PublisherDisplayName>StefanPU</PublisherDisplayName>
-    <Logo>images\storelogo.png</Logo>
+    <Logo>images\store.png</Logo>
   </Properties>
   <Prerequisites>
     <OSMinVersion>6.2.1</OSMinVersion>
@@ -15,9 +15,9 @@
   </Resources>
   <Applications>
     <Application Id="App" StartPage="default.html">
-      <VisualElements DisplayName="Quotes" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="Quotes" ForegroundText="light" BackgroundColor="#003056">
-        <DefaultTile ShowName="allLogos" />
-        <SplashScreen Image="images\splashscreen.png" />
+      <VisualElements DisplayName="Известни цитати" Logo="images/logo.png" SmallLogo="images\small.png" Description="Цитати от известни личности" ForegroundText="light" BackgroundColor="#080A45">
+        <DefaultTile ShowName="allLogos" WideLogo="images\wide.png" />
+        <SplashScreen Image="images/splash.png" BackgroundColor="#080A45" />
       </VisualElements>
       <Extensions>
         <Extension Category="windows.search" />

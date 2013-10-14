@@ -17,9 +17,13 @@
     }
 }
 
+.win-item {
+    background: rgba(4, 81, 140, .3);
+}
+
 #authorsQuotesContainer {
-    width:50%;
-    height:50%;    
+    width:70%;
+    height:60%;    
     position:relative;
     font-size:18px;
     font-weight:bold;
