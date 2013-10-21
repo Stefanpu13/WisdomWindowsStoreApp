@@ -27,7 +27,7 @@
 
         selectedLetters:[],
 
-        randomQuote: [],
+        randomQuote: new Models.Quote(),
 
         authorsByLetter: [],
 

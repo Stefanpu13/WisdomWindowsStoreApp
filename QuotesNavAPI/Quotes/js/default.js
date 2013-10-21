@@ -18,6 +18,11 @@
             } else {
                 // TODO: This application has been reactivated from suspension.
                 // Restore application state here.
+                var quote = WinJS.Application.sessionState.quote;
+                if (quote) {
+                    Data.randomQuote.author = quote.author;
+                    Data.randomQuote.quote = quote.quote;
+                }
             }            
 
             if (app.sessionState.history) {

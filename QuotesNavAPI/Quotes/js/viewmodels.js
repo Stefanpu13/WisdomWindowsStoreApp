@@ -9,7 +9,7 @@
     var categoriesByLetterList = new WinJS.Binding.List([]);
     var authorsQuotesList = new WinJS.Binding.List([]);
     var categoriesQuotesList = new WinJS.Binding.List([]);
-    var randomQuoteList = new WinJS.Binding.List([]);
+    var randomQuote = new WinJS.Binding.as(new Models.Quote("", ""));;
     var currentDisplayedItem = new WinJS.Binding.List([]);
     var currentCollection = new WinJS.Binding.List([]);
     var error = new WinJS.Binding.define(Models.SearchError);
@@ -38,17 +38,16 @@
     var getAuthorsQuotes = function (authors) {
         Data.authorsQuotes = [];
         var allPromises = [];
-        var author;
+        var authorQuotes;
         for (var i = 0; i < authors.length; i++) {
             var promise =
                 Data.getAuthorsQuotes(authors[i].name, authors[i].quotesUrl).then(function (result) {
-                    author = JSON.parse("[" + result.responseText + "]")[0];
+                    authorQuotes = JSON.parse(result.responseText);
 
-                    for (var j = 0; j < author.quotes.length; j++) {
-                        var quotes = decodeElements(author.quotes[j]);
-
+                    for (var j = 0; j < authorQuotes.quotes.length; j++) {
+                        var quote = decodeElements(authorQuotes.quotes[j]);
                         Data.authorsQuotes.
-                        push(new Models.Quote(quotes, author.name));
+                        push(new Models.Quote(quote, authorQuotes.name));
                     }
                 });
             allPromises.push(promise);
@@ -58,7 +57,7 @@
             if (Data.authorsByLetter.length == 0) {
 
             }
-            else {                
+            else {
                 ViewModels.loadAuthorsQuotes();
             }
         });
@@ -70,25 +69,19 @@
         var category;
         for (var i = 0; i < categories.length; i++) {
             var promise =
-                Data.getCategoriesQuotes(categories[i].name, categories[i].quotesUrl).then(function (result) {
+                Data.getCategoriesQuotes(categories[i].name, categories[i].quotesUrl)
+                .then(function (result) {
                     category = JSON.parse(result.responseText);
                     var allQuotes = category.quotes;
-                    var quoteText;
-                    var authorName;                    
-                    var newQuote; 
-
-                    // As 'category.quotes' is object eith properties, we have to
-                    // enumerate and Push all props and their values in 'newQuote'
-                    for (var prop in allQuotes) {
-                        newQuote = new Models.CategoryQuotesModel(category.title);
-                        quoteText = decodeElements(prop);
-                        authorName = allQuotes[prop];
-                        newQuote.authorName = allQuotes[prop];
-                        newQuote.quoteContent = decodeElements(prop);
+                    // As 'category.quotes' is object with properties, we have to
+                    // enumerate and Push all props(quotesText) and their values in 'newQuote'
+                    for (var quote in allQuotes) {
+                        // Get the value at the specified index - which is string value.                        
+                        var author = allQuotes[quote];
+                        var quote = decodeElements(quote);
+                        var newQuote = new Models.Quote(quote, author);
                         Data.categoriesQuotes.push(newQuote);
                     }
-
-                    
                 });
             allPromises.push(promise);
         }
@@ -161,17 +154,14 @@
     }
 
     var getRandom = function () {
-        
-        var quote;
-        var promise = Data.getRandomQuote().then(function (result) {
+        var quote
+        var promise;
+
+
+        promise = Data.getRandomQuote().then(function (result) {
             quote = JSON.parse("[" + result.responseText + "]")[0];
             quote.quote = decodeElements(quote.quote);
-            if (Data.randomQuote.length === 0) {
-                Data.randomQuote.push(new Models.RandomModel(quote.quote, quote.author));
-            } else {
-                Data.randomQuote[0].quote = quote.quote;
-                Data.randomQuote[0].author = quote.author
-            }
+            Data.randomQuote = quote;
         });
 
         return promise;
@@ -238,15 +228,9 @@
         }
     }
 
-    var loadRandomQuote = function () {
-        
-        var currentCount = randomQuoteList.dataSource.list.length;
-        randomQuoteList.dataSource.list.splice(0, currentCount);        
-
-        var quote = Data.randomQuote;
-        for (var i = 0; i < quote.length; i++) {
-            randomQuoteList.push(quote[i]);            
-        }
+    var loadRandomQuote = function () {        
+        randomQuote.author = Data.randomQuote.author;
+        randomQuote.quote = Data.randomQuote.quote;
     }
 
     var resetBinding = function (bindList) {
@@ -274,7 +258,7 @@
         categoriesByLetterList: categoriesByLetterList,
         authorsQuotesList: authorsQuotesList,
         categoriesQuotesList: categoriesQuotesList,
-        randomQuoteList: randomQuoteList,
+        randomQuote: randomQuote,
         currentDisplayedItem: currentDisplayedItem
     });
 })();

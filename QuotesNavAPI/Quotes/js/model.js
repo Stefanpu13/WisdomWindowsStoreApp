@@ -3,19 +3,9 @@
         name: "",
         quotes:[]
     };
-    var AuthorQuotes = WinJS.Class.define(function (name, quotes) {
-        this.name = name;
-        this.quotes = quotes;
-    })
 
-    var CategoryQuotes = WinJS.Class.define(function (name, quoteContent, authorName) {
-        this.name = name;
-        this.quoteContent = quoteContent;
-        this.authorName = authorName;
-    })
-
-    var Quote = WinJS.Class.define(function (content, author) {
-        this.content= content;
+    var Quote = WinJS.Class.define(function (quote, author) {
+        this.quote = quote;
         this.author = author;
     })
 
@@ -32,19 +22,11 @@
     var SearchError = WinJS.Class.define(function (content) {
         this.message = content;
     });
-
-    var RandomModel = WinJS.Class.define(function (quote, author) {
-        this.quote = quote;
-        this.author = author;
-    });
     
     WinJS.Namespace.define('Models', {
         AuthorsByLetterModel: AuthorsByLetter,
-        CategoriesByLetterModel: CategoriesByLetter,
-        AuthorQuotesModel: AuthorQuotes,
-        CategoryQuotesModel: CategoryQuotes,
+        CategoriesByLetterModel: CategoriesByLetter,       
         Quote: Quote,
-        SearchError: SearchError,
-        RandomModel: RandomModel,
+        SearchError: SearchError       
     });
 })();

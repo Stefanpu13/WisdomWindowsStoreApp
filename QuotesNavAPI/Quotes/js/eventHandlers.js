@@ -9,14 +9,6 @@
         WinJS.Navigation.navigate(link.href);        
     };
 
-    var letterTypeEventHandler = function (eventInfo) {
-        eventInfo.preventDefault();
-        var link = eventInfo.target;
-        var href = 'pages/' + link.id + '/' + link.id + '.html';
-        link.href = href;
-        WinJS.Navigation.navigate(link.href);
-    }
-
     //var attachCreateNewCollection = function (eventInfo) {
     //    var newCollectionButton = document.getElementById('createNewCollection');
     //    newCollectionButton.addEventListener('click', Commands.createCollection);

@@ -1,4 +1,5 @@
-﻿/// <reference path="../../js/eventHandlers.js" />
+﻿/// <reference path="../../js/viewmodels.js" />
+/// <reference path="../../js/eventHandlers.js" />
 (function () {
     "use strict";
 
@@ -7,9 +8,7 @@
         // populates the page elements with the app's data.
 
         init: function (element, options) {
-            WinJS.Binding.processAll(element, ViewModels.getRandomQuote().then(function (success) {
-                ViewModels.loadRandomQuote();
-            }));
+            HomeCodeBehind.getRandomQuote();
         },
 
         ready: function (element, options) {
@@ -17,7 +16,9 @@
             WinJS.Utilities.query("a").listen("click",
                 EventHаndlers.linkClickEventHandler, false);
 
-            EventHаndlers.attachAllHandlers();
+            // Bind random quote properties for animation purposes.
+            // It is enough to bind just one property
+            ViewModels.randomQuote.bind('author', HomeCodeBehind.onQuoteChange);
 
             var printManager = Windows.Graphics.Printing.PrintManager.getForCurrentView();
             printManager.onprinttaskrequested = Print.onPrintTaskRequested;
@@ -25,20 +26,15 @@
             var dataTransferManager = Windows.ApplicationModel.DataTransfer.DataTransferManager.getForCurrentView();
             dataTransferManager.addEventListener("datarequested", Share.shareTextHandler);
 
-            ReloadRandom.getNewRandomQuote(element);     
+            // Find the container and bind the observable quote to it.
+            var container = document.getElementById('container');
+            WinJS.Binding.processAll(container, ViewModels.randomQuote);
+
+
         },
 
         unload: function () {
-            ViewModels.resetBinding(ViewModels.randomQuoteList);
-        },
-
-        nameInputChanged: function (eventInfo) {
-            var nameInput = eventInfo.srcElement;
-
-            // Store the user's name for multiple sessions.
-            var appData = Windows.Storage.ApplicationData.current;
-            var roamingSettings = appData.roamingSettings;
-            //roamingSettings.values["userName"] = nameInput.value;
-        },
+            HomeCodeBehind.stopRandomQuote()
+        }
     });
 })();
